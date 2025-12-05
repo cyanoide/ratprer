@@ -46,24 +46,189 @@
             border-bottom: 2px solid #444;
         }
 
-        .station-selector {
+        /* Header Controls */
+        .controls-container {
             display: flex;
+            justify-content: flex-start;
+            /* Changed from space-between to flex-start for better grouping */
             align-items: center;
+            width: 100%;
+            max-width: 800px;
+            /* margin-bottom: 20px; REMOVED */
             gap: 10px;
         }
 
-        label {
-            font-size: 1.1em;
-            color: #ccc;
+        .search-wrapper {
+            position: relative;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            background-color: #333;
+            /* Box background */
+            border-radius: 30px;
+            /* Rounded pill shape */
+            padding: 5px 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            border: 1px solid #555;
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
 
-        select {
-            background-color: #444;
+        .search-wrapper:focus-within {
+            border-color: #0055c8;
+            /* Highlight on focus */
+            box-shadow: 0 0 8px rgba(0, 85, 200, 0.5);
+        }
+
+        #station-search {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: transparent;
+            /* Transparent to blend with wrapper */
+            color: #ffffff;
+            font-size: 16px;
+            outline: none;
+        }
+
+        #search-btn {
+            background: none;
+            border: none;
+            color: #aaa;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 5px;
+            transition: color 0.3s;
+        }
+
+        #search-btn:hover {
             color: white;
-            border: 1px solid #666;
-            padding: 5px 10px;
-            font-size: 1em;
-            border-radius: 4px;
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            border: 1px solid #555;
+            border-radius: 15px;
+            /* Fully rounded corners */
+            margin-top: 8px;
+            /* Separation from search bar */
+            z-index: 1000;
+            max-height: 400px;
+            overflow-y: auto;
+            display: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            /* Stronger shadow for floating effect */
+            /* overflow: hidden; REMOVED to allow scrolling */
+        }
+
+        .search-result-item {
+            padding: 12px 15px;
+            cursor: pointer;
+            border-bottom: 1px solid #444;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s;
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-item:hover {
+            background-color: #444;
+        }
+
+        .result-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .result-name {
+            font-weight: 700;
+            color: #fff;
+            font-size: 1.1em;
+        }
+
+        .result-city {
+            font-size: 0.85em;
+            color: #aaa;
+        }
+
+        .result-lines {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            max-width: 40%;
+        }
+
+        .favorites-wrapper select {
+            background-color: #333;
+            color: var(--text-yellow);
+            border: 1px solid #555;
+            padding: 8px 15px;
+            /* More padding for pill shape */
+            border-radius: 30px;
+            /* Rounded pill */
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            outline: none;
+            appearance: none;
+            /* Remove default arrow to style better if needed, or keep simple */
+            -webkit-appearance: none;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .favorites-wrapper select:focus {
+            border-color: #0055c8;
+            box-shadow: 0 0 8px rgba(0, 85, 200, 0.5);
+        }
+
+        .btn-favorite {
+            background-color: #333;
+            /* Dark background for the circle */
+            border: 1px solid #555;
+            border-radius: 50%;
+            /* Perfect circle */
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em;
+            /* Slightly smaller icon to fit in circle */
+            cursor: pointer;
+            color: white;
+            transition: all 0.2s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            padding: 0;
+            /* Reset padding */
+        }
+
+        .btn-favorite:hover {
+            transform: scale(1.05);
+            background-color: #444;
+            border-color: #777;
+        }
+
+        /* Station Info */
+        .station-info {
+            padding: 10px 20px;
+            background-color: #222;
+            border-bottom: 1px solid #333;
+        }
+
+        .station-info h1 {
+            margin: 0;
+            font-size: 1.5em;
+            color: #ddd;
         }
 
         .clock {
@@ -157,42 +322,69 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-weight: bold;
+            font-weight: 800;
             font-size: 1.2em;
-            border-radius: 8px;
-            /* RER style square-ish */
+            /* Border radius handled dynamically in JS */
         }
 
-        .line-b {
-            background-color: var(--rer-b-color);
-            color: white;
-        }
-
-        /* T10 Logo Style matching the image */
-        .line-t10-container {
-            width: 50px;
-            height: 50px;
-            background-color: white;
+        .line-icon-tram {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
+            width: 42px;
+            height: 24px;
+            background-color: white;
             border-radius: 4px;
-            /* Slight rounding */
             overflow: hidden;
+            margin-right: 5px;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
         }
 
-        .t10-bar {
+        .line-icon-tram-small {
+            width: 32px;
+            height: 18px;
+            margin-right: 4px;
+        }
+
+        .tram-bar {
+            height: 4px;
             width: 100%;
-            height: 10px;
-            background-color: var(--t10-olive);
         }
 
-        .t10-text {
-            color: black;
-            font-weight: 900;
-            font-size: 1.4em;
+        .line-icon-tram-small .tram-bar {
+            height: 3px;
+        }
+
+        .tram-text {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #182b49;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
             line-height: 1;
+        }
+
+        .line-icon-tram-small .tram-text {
+            font-size: 10px;
+        }
+
+        .line-icon-small {
+            width: 24px;
+            height: 24px;
+            font-size: 0.8em;
+            ``` border-radius: 4px;
+            /* Default small radius */
+        }
+
+        .line-icon-wide {
+            width: 60px;
+            /* Increased from 50px for better spacing */
+            padding: 0;
+            border-radius: 4px;
+            justify-content: center;
+            /* Center text */
         }
 
         .col-dest {
@@ -206,12 +398,13 @@
         }
 
         .destination-name {
-            font-size: 2em;
+            font-size: 1.5em;
+            /* Fixed consistent size */
             font-weight: 700;
-            /* Bold */
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            line-height: 1.2;
         }
 
         .destination-sub {
@@ -239,68 +432,391 @@
 <body>
 
     <header>
-        <div class="station-selector">
-            <label for="station-select">Départ :</label>
-            <select id="station-select" onchange="updateStation()">
-                <option value="massy_b">Massy - Palaiseau (RER B)</option>
-                <option value="croix_b">La Croix de Berny (RER B)</option>
-                <option value="croix_t10">La Croix de Berny (T10)</option>
-                <option value="parc_t10">Parc des Sports (T10)</option>
-            </select>
+        <div class="controls-container">
+            <div class="search-wrapper">
+                <input type="text" id="station-search" placeholder="Rechercher une gare (RER, Métro, Tram)..."
+                    autocomplete="off">
+                <div id="search-results" class="search-results"></div>
+            </div>
+
+            <div class="favorites-wrapper" id="favorites-wrapper" style="display: none;">
+                <select id="favorites-select" onchange="loadFavorite(this.value)">
+                    <option value="" disabled selected>★ Favoris</option>
+                </select>
+            </div>
+
+            <button id="btn-favorite" class="btn-favorite" onclick="toggleFavorite()"
+                title="Ajouter aux favoris">☆</button>
         </div>
+
         <div class="clock" id="clock">
             <span id="clock-time">--:--</span><span class="seconds" id="clock-seconds">00</span>
         </div>
     </header>
 
+    <div class="station-info" id="station-info">
+        <h1 id="current-station-name">Sélectionnez une gare</h1>
+    </div>
+
     <div class="schedule-container" id="schedule-container">
-        <div class="loading">Chargement des horaires...</div>
+        <div class="loading">Utilisez la recherche pour afficher les horaires.</div>
     </div>
 
     <script>
-        const API_KEY = 'bV9X6QEkuJZZ1BFAL2maQfueIqGtRi6J';
+        const API_KEY = 'i8mKgfov1XsgmJtflIfbn10bx6iYk7zO';
 
-        const STATIONS = {
-            'massy_b': { id: 'stop_area:IDFM:63244', mode: 'RER', line: 'B' },
-            'croix_b': { id: 'stop_area:IDFM:69813', mode: 'RER', line: 'B' },
-            'croix_t10': { id: 'stop_area:IDFM:69813', mode: 'Tramway', line: 'T10' },
-            'parc_t10': { id: 'stop_area:IDFM:70009', mode: 'Tramway', line: 'T10' }
-        };
+        // State
+        let currentStation = null; // { id, name }
+        let favorites = JSON.parse(localStorage.getItem('ratp_favorites')) || [];
 
-        let currentStationKey = 'massy_b';
-        let refreshInterval;
+        // DOM Elements
+        const searchInput = document.getElementById('station-search');
+        const resultsDiv = document.getElementById('search-results');
+        const favoritesWrapper = document.getElementById('favorites-wrapper');
+        const favoritesSelect = document.getElementById('favorites-select');
+        const btnFavorite = document.getElementById('btn-favorite');
+        const stationNameEl = document.getElementById('current-station-name');
+        const container = document.getElementById('schedule-container');
 
+        // --- Initialization ---
+        function init() {
+            updateClock();
+            setInterval(updateClock, 1000);
+            updateFavoritesUI();
+
+            // Load last station or default if exists
+            const lastStation = JSON.parse(localStorage.getItem('ratp_last_station'));
+            if (lastStation) {
+                selectStation(lastStation.id, lastStation.name);
+            }
+
+            // Search Listeners
+            searchInput.addEventListener('input', debounce((e) => {
+                const query = e.target.value.trim();
+                if (query.length > 2) {
+                    performSearch(query);
+                } else {
+                    resultsDiv.style.display = 'none';
+                }
+            }, 500));
+
+            // Close search on click outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.search-wrapper')) {
+                    resultsDiv.style.display = 'none';
+                }
+            });
+        }
+
+        // --- Clock ---
         function updateClock() {
             const now = new Date();
             const hours = String(now.getHours()).padStart(2, '0');
             const minutes = String(now.getMinutes()).padStart(2, '0');
             const seconds = String(now.getSeconds()).padStart(2, '0');
-
             document.getElementById('clock-time').textContent = `${hours}:${minutes}`;
             document.getElementById('clock-seconds').textContent = seconds;
         }
-        setInterval(updateClock, 1000);
-        updateClock();
 
-        function updateStation() {
-            const select = document.getElementById('station-select');
-            currentStationKey = select.value;
+        // --- Search Logic ---
+        // --- Search Logic ---
+        let debounceTimer; // Unused, can be removed
+        const searchCache = new Map();
+        let currentSearchResults = []; // Added to store current search results
+
+        // Helper for debouncing input
+        function debounce(func, delay) {
+            let timeout;
+            return function (...args) {
+                const context = this;
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(context, args), delay);
+            };
+        }
+
+        async function performSearch(query, autoSelect = false) {
+            // Check cache first
+            if (searchCache.has(query) && !autoSelect) {
+                renderSearchResults(searchCache.get(query));
+                return;
+            }
+
+            try {
+                // Use depth=2 to try and get nested line data
+                const url = `https://prim.iledefrance-mobilites.fr/marketplace/v2/navitia/places?q=${encodeURIComponent(query)}&type[]=stop_area&count=20&depth=2&disable_geojson=true`;
+                const response = await fetch(url, {
+                    headers: { 'apiKey': API_KEY }
+                });
+
+                if (response.status === 429) {
+                    console.warn('Rate limit exceeded (429). Retrying in 2s...');
+                    resultsDiv.innerHTML = '<div class="search-result-item" style="cursor:default; color:#ff9999;">Trop de requêtes. Veuillez patienter...</div>';
+                    resultsDiv.style.display = 'block';
+                    return;
+                }
+
+                if (!response.ok) throw new Error(`Erreur HTTP: ${response.status}`);
+
+                const data = await response.json();
+
+                // REVERT: Pass all places directly to render, minimal filtering if needed
+                // We just ensure it has a name and id to be safe
+                const places = (data.places || []).filter(p => p.id && p.name);
+
+                // Cache the result
+                searchCache.set(query, places);
+
+                currentSearchResults = places;
+
+                if (autoSelect && currentSearchResults.length > 0) {
+                    const first = currentSearchResults[0];
+                    selectStation(first.id, first.name);
+                    resultsDiv.style.display = 'none';
+                    searchInput.value = '';
+                } else {
+                    renderSearchResults(currentSearchResults);
+                }
+            } catch (error) {
+                console.error('Search error:', error);
+                resultsDiv.innerHTML = `<div class="search-result-item" style="cursor:default; color:#ff9999;">Erreur: ${error.message}</div>`;
+                resultsDiv.style.display = 'block';
+            }
+        }
+
+        function renderSearchResults(places) {
+            console.log('renderSearchResults NEW VERSION called with', places.length, 'places');
+            if (places.length > 0) {
+                console.log('First place lines:', places[0].lines);
+                console.log('First place admin regions:', places[0].administrative_regions);
+            }
+            resultsDiv.innerHTML = '';
+            if (places.length === 0) {
+                resultsDiv.style.display = 'none';
+                return;
+            }
+
+            places.forEach(place => {
+                const div = document.createElement('div');
+                div.className = 'search-result-item';
+
+                // 1. Text Section (Name + City)
+                const textDiv = document.createElement('div');
+                textDiv.className = 'result-text';
+
+                const nameSpan = document.createElement('span');
+                nameSpan.className = 'result-name';
+
+                // Extract city if present in name or administrative_regions
+                let displayName = place.name;
+                let city = '';
+
+                // Try to find city in administrative regions
+                if (place.administrative_regions) {
+                    const cityRegion = place.administrative_regions.find(r => r.level === 8);
+                    if (cityRegion) city = cityRegion.name;
+                }
+
+                // Fallback: Extract from name if not found or if name contains parens
+                if (!city && displayName.includes('(')) {
+                    const match = displayName.match(/\(([^)]+)\)/);
+                    if (match) city = match[1];
+                }
+
+                // Clean up name
+                if (city && displayName.includes(`(${city})`)) {
+                    displayName = displayName.replace(`(${city})`, '').trim();
+                } else if (displayName.includes('(')) {
+                    // Generic cleanup if exact city match fails but parens exist
+                    displayName = displayName.replace(/\s*\([^)]+\)/, '').trim();
+                }
+
+                nameSpan.textContent = displayName;
+
+                const citySpan = document.createElement('span');
+                citySpan.className = 'result-city';
+                citySpan.textContent = city || '';
+
+                textDiv.appendChild(nameSpan);
+                if (city) textDiv.appendChild(citySpan);
+
+                // 2. Lines Section (Icons)
+                const linesDiv = document.createElement('div');
+                linesDiv.className = 'result-lines';
+
+                // Collect unique lines
+                const uniqueLines = [];
+                const seen = new Set();
+                let hasSpecificLines = false;
+
+                if (place.lines && place.lines.length > 0) {
+                    place.lines.forEach(line => {
+                        if (!line.commercial_mode) return;
+                        const modeId = line.commercial_mode.id.split(':')[1];
+                        if (['RapidTransit', 'Metro', 'Métro', 'Tramway'].includes(modeId)) {
+                            const key = `${modeId}-${line.code}`;
+                            if (!seen.has(key)) {
+                                seen.add(key);
+                                uniqueLines.push(line);
+                                hasSpecificLines = true;
+                            }
+                        }
+                    });
+                }
+
+                if (hasSpecificLines) {
+                    uniqueLines.slice(0, 5).forEach(line => {
+                        const modeId = line.commercial_mode.id.split(':')[1];
+                        const icon = createLineIcon(line.code, modeId, line.color, line.text_color, true);
+                        linesDiv.appendChild(icon);
+                    });
+                } else if (place.commercial_modes) {
+                    // Fallback: Use commercial_modes if no specific lines found
+                    place.commercial_modes.forEach(mode => {
+                        const modeId = mode.id.split(':')[1];
+                        if (modeId === 'Metro' || modeId === 'Métro') {
+                            linesDiv.appendChild(createLineIcon('M', 'Metro', '0055C8', 'FFFFFF', true));
+                        } else if (modeId === 'RapidTransit') {
+                            linesDiv.appendChild(createLineIcon('RER', 'RapidTransit', '0055C8', 'FFFFFF', true));
+                        } else if (modeId === 'Tramway') {
+                            linesDiv.appendChild(createLineIcon('T', 'Tramway', '888888', '182b49', true));
+                        }
+                    });
+                }
+
+                div.appendChild(textDiv);
+                div.appendChild(linesDiv);
+
+                div.onclick = () => {
+                    selectStation(place.id, place.name);
+                    resultsDiv.style.display = 'none';
+                    searchInput.value = '';
+                };
+                resultsDiv.appendChild(div);
+            });
+            resultsDiv.style.display = 'block';
+        }
+
+        // --- Helper: Create Line Icon ---
+        function createLineIcon(label, mode, colorHex, textColorHex, isSmall = false) {
+            if (mode === 'Tramway') {
+                const container = document.createElement('div');
+                container.className = isSmall ? 'line-icon-tram line-icon-tram-small' : 'line-icon-tram';
+
+                const topBar = document.createElement('div');
+                topBar.className = 'tram-bar';
+                topBar.style.backgroundColor = `#${colorHex}`;
+
+                const textDiv = document.createElement('div');
+                textDiv.className = 'tram-text';
+                textDiv.textContent = label;
+                // Text color is always dark for this style
+
+                const bottomBar = document.createElement('div');
+                bottomBar.className = 'tram-bar';
+                bottomBar.style.backgroundColor = `#${colorHex}`;
+
+                container.appendChild(topBar);
+                container.appendChild(textDiv);
+                container.appendChild(bottomBar);
+
+                return container;
+            }
+
+            const div = document.createElement('div');
+            div.className = 'line-icon';
+            if (isSmall) div.classList.add('line-icon-small');
+
+            // Check for long labels (4+ chars) like "5101"
+            if (label.length >= 4) {
+                div.classList.add('line-icon-wide');
+            }
+
+            div.style.backgroundColor = `#${colorHex}`;
+            div.style.color = `#${textColorHex}`;
+            div.textContent = label;
+
+            // Shape Logic
+            if (mode === 'Metro') {
+                div.style.borderRadius = '50%'; // Circle
+            } else {
+                // RER (RapidTransit) / Train (LocalTrain)
+                div.style.borderRadius = '8px'; // Rounded Square
+            }
+
+            return div;
+        }
+
+        // --- Station Selection ---
+        function selectStation(id, name) {
+            currentStation = { id, name };
+            stationNameEl.textContent = name;
+            localStorage.setItem('ratp_last_station', JSON.stringify(currentStation));
+            updateFavoriteBtnState();
+
+            // Show loading immediately
+            container.innerHTML = '<div class="loading">Chargement des horaires...</div>';
+
             fetchSchedules();
         }
 
-        async function fetchSchedules() {
-            const container = document.getElementById('schedule-container');
-            // Don't clear immediately to avoid flicker on refresh, only on station change
-            // But here we just call it 'loading' if it's a manual change? 
-            // Let's just keep the old data until new data arrives if possible, or show loading if empty.
-            if (!container.hasChildNodes() || container.querySelector('.loading')) {
-                container.innerHTML = '<div class="loading">Chargement...</div>';
+        // --- Favorites ---
+        function toggleFavorite() {
+            if (!currentStation) return;
+
+            const index = favorites.findIndex(f => f.id === currentStation.id);
+            if (index === -1) {
+                favorites.push(currentStation);
+            } else {
+                favorites.splice(index, 1);
             }
 
-            const station = STATIONS[currentStationKey];
+            localStorage.setItem('ratp_favorites', JSON.stringify(favorites));
+            updateFavoritesUI();
+            updateFavoriteBtnState();
+        }
+
+        function updateFavoritesUI() {
+            if (favorites.length === 0) {
+                favoritesWrapper.style.display = 'none';
+            } else {
+                favoritesWrapper.style.display = 'block';
+                favoritesSelect.innerHTML = '<option value="" disabled selected>★ Favoris</option>';
+                favorites.forEach(fav => {
+                    const option = document.createElement('option');
+                    option.value = fav.id; // We store ID as value
+                    option.textContent = fav.name;
+                    favoritesSelect.appendChild(option);
+                });
+            }
+        }
+
+        function loadFavorite(id) {
+            const fav = favorites.find(f => f.id === id);
+            if (fav) {
+                selectStation(fav.id, fav.name);
+                favoritesSelect.value = ""; // Reset select
+            }
+        }
+
+        function updateFavoriteBtnState() {
+            if (!currentStation) {
+                btnFavorite.style.display = 'none';
+                return;
+            }
+            btnFavorite.style.display = 'inline-block';
+            const isFav = favorites.some(f => f.id === currentStation.id);
+            btnFavorite.textContent = isFav ? '★' : '☆';
+            btnFavorite.style.color = isFav ? 'var(--text-yellow)' : 'white';
+        }
+
+        // --- Schedules ---
+        async function fetchSchedules() {
+            if (!currentStation) return;
+
+            // container.innerHTML = '<div class="loading">Chargement...</div>'; // Already set in selectStation
 
             try {
-                const response = await fetch(`https://prim.iledefrance-mobilites.fr/marketplace/v2/navitia/stop_areas/${station.id}/departures?count=20`, {
+                const response = await fetch(`https://prim.iledefrance-mobilites.fr/marketplace/v2/navitia/stop_areas/${currentStation.id}/departures?count=20`, {
                     headers: { 'apiKey': API_KEY }
                 });
 
@@ -308,13 +824,32 @@
 
                 const data = await response.json();
 
-                // Filter
-                const departures = data.departures.filter(d =>
-                    d.display_informations.commercial_mode === station.mode &&
-                    d.display_informations.label === station.line
+                // Filter for Metro, RER, Tram
+                // API returns "Métro" with accent, "RER", "Tramway"
+                // Filter for Metro, RER, Tram, Train, and Bus
+                // API returns "Métro" with accent, "RER", "Tramway"
+                const allowedModes = ['RER', 'Metro', 'Métro', 'Tramway', 'Train', 'Bus'];
+                let departures = data.departures.filter(d =>
+                    allowedModes.includes(d.display_informations.commercial_mode)
                 );
 
-                renderSchedules(departures, station);
+                // Sort: Metro/RER/Tram/Train first, Bus last. Then by time.
+                departures.sort((a, b) => {
+                    const modeA = a.display_informations.commercial_mode;
+                    const modeB = b.display_informations.commercial_mode;
+                    const isBusA = modeA === 'Bus';
+                    const isBusB = modeB === 'Bus';
+
+                    if (isBusA && !isBusB) return 1; // Bus goes to bottom
+                    if (!isBusA && isBusB) return -1; // Non-Bus goes to top
+
+                    // Secondary sort: Time
+                    const timeA = parseNavitiaDate(a.stop_date_time.departure_date_time);
+                    const timeB = parseNavitiaDate(b.stop_date_time.departure_date_time);
+                    return timeA - timeB;
+                });
+
+                renderSchedules(departures);
 
             } catch (error) {
                 console.error('Erreur:', error);
@@ -322,11 +857,9 @@
             }
         }
 
-        function renderSchedules(departures, stationConfig) {
-            const container = document.getElementById('schedule-container');
-
+        function renderSchedules(departures) {
             if (departures.length === 0) {
-                container.innerHTML = '<div class="error">Aucun train à l\'affichage.</div>';
+                container.innerHTML = '<div class="error">Aucun train (RER, Métro, Tram) à l\'affichage.</div>';
                 return;
             }
 
@@ -338,21 +871,20 @@
 
                 // 1. Mission Code
                 let mission = info.headsign || info.trip_short_name || '';
-                if (stationConfig.line === 'T10') {
-                    mission = ''; // T10 usually doesn't show mission codes on screens, just destination
+                // Tram and Bus usually don't show mission codes like RER (or it's the destination name which duplicates)
+                if (info.commercial_mode === 'Tramway' || info.commercial_mode === 'Metro' || info.commercial_mode === 'Métro' || info.commercial_mode === 'Bus') {
+                    mission = '';
                 }
 
-                // 2. Time & Status (Delay)
+                // 2. Time & Status
                 const baseTime = parseNavitiaDate(timeInfo.base_departure_date_time);
                 const realTime = parseNavitiaDate(timeInfo.departure_date_time);
                 const now = new Date();
 
-                // Calculate delay for status text
                 const delayMinutes = Math.round((realTime - baseTime) / 60000);
                 let statusText = "à l'heure";
                 if (delayMinutes > 0) statusText = `+${delayMinutes} min`;
 
-                // Calculate display time logic
                 const diffMs = realTime - now;
                 const diffMins = Math.floor(diffMs / 60000);
 
@@ -368,32 +900,24 @@
                     displayTime = realTime.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
                 }
 
-                // 3. Line Icon
-                let lineIconHtml = '';
-                if (stationConfig.line === 'B') {
-                    lineIconHtml = '<div class="line-icon line-b">B</div>';
-                } else {
-                    // New T10 Logo Style
-                    lineIconHtml = `
-                        <div class="line-t10-container">
-                            <div class="t10-bar"></div>
-                            <div class="t10-text">T10</div>
-                            <div class="t10-bar"></div>
-                        </div>
-                    `;
-                }
+                // 3. Dynamic Line Icon
+                // Use the helper function to ensure consistency
+                const iconDiv = createLineIcon(info.label, info.commercial_mode, info.color, info.text_color);
+                const lineIconHtml = iconDiv.outerHTML;
 
-                // 4. Destination & Subtext
+                // 4. Destination
                 let destination = info.direction;
-
-                // Fix for long T10 destination
-                if (destination.includes("La Croix de Berny")) {
-                    destination = "La Croix de Berny"; // Shorten it
-                }
+                // Truncate common long suffixes if needed, or rely on CSS ellipsis
+                // Simple cleanup
+                destination = destination.replace(/\(.*\)/, '').trim();
 
                 let subtext = info.description || "";
-                // Clean up subtext if it's just the same as destination or empty
-                if (subtext === destination) subtext = "";
+                if (subtext === info.direction) subtext = "";
+
+                // Check length for dynamic sizing - REMOVED for consistency
+                // const isLong = destination.length > 20;
+                // const destClass = isLong ? 'destination-name text-long' : 'destination-name';
+                const destClass = 'destination-name';
 
                 html += `
                     <div class="schedule-row">
@@ -404,7 +928,7 @@
                         <div class="${timeClass}">${displayTime}</div>
                         <div class="col-line">${lineIconHtml}</div>
                         <div class="col-dest">
-                            <div class="destination-name" title="${destination}">${destination}</div>
+                            <div class="${destClass}" title="${info.direction}">${destination}</div>
                             <div class="destination-sub">${subtext}</div>
                         </div>
                     </div>
@@ -414,8 +938,8 @@
             container.innerHTML = html;
         }
 
+        // --- Utils ---
         function parseNavitiaDate(isoString) {
-            // YYYYMMDDTHHMMSS
             if (!isoString) return new Date();
             const year = parseInt(isoString.substring(0, 4));
             const month = parseInt(isoString.substring(4, 6)) - 1;
@@ -426,11 +950,25 @@
             return new Date(year, month, day, hour, minute, second);
         }
 
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
         // Auto Refresh
-        document.addEventListener('DOMContentLoaded', () => {
-            fetchSchedules();
-            refreshInterval = setInterval(fetchSchedules, 30000); // Refresh every 30s
-        });
+        setInterval(() => {
+            if (currentStation) fetchSchedules();
+        }, 30000);
+
+        // Start
+        init();
 
     </script>
 </body>
