@@ -67,7 +67,11 @@
             /* Box background */
             border-radius: 30px;
             /* Rounded pill shape */
-            padding: 5px 15px;
+            padding: 0 15px;
+            /* Adjusted padding for fixed height */
+            height: 40px;
+            /* Fixed height for harmonization */
+            box-sizing: border-box;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
             border: 1px solid #555;
             transition: border-color 0.3s, box-shadow 0.3s;
@@ -88,6 +92,24 @@
             color: #ffffff;
             font-size: 16px;
             outline: none;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #2b2b2b;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #555;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #777;
         }
 
         #search-btn {
@@ -171,7 +193,13 @@
             background-color: #333;
             color: var(--text-yellow);
             border: 1px solid #555;
-            padding: 8px 15px;
+            padding: 0 15px;
+            /* Adjusted padding */
+            height: 40px;
+            /* Fixed height */
+            line-height: 38px;
+            /* Vertically center text */
+            box-sizing: border-box;
             /* More padding for pill shape */
             border-radius: 30px;
             /* Rounded pill */
@@ -184,6 +212,12 @@
             text-align: center;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
             transition: border-color 0.3s, box-shadow 0.3s;
+            /* Fixed width constraints */
+            width: 150px;
+            max-width: 150px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .favorites-wrapper select:focus {
@@ -198,6 +232,9 @@
             border-radius: 50%;
             /* Perfect circle */
             width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+            /* Prevent deformation */
             height: 40px;
             display: flex;
             justify-content: center;
@@ -229,6 +266,7 @@
             margin: 0;
             font-size: 1.5em;
             color: #ddd;
+            /* text-align: center; REMOVED - handled in media query */
         }
 
         .clock {
@@ -237,12 +275,19 @@
             color: white;
             background-color: #000080;
             /* Dark blue box for clock */
-            padding: 5px 15px;
+            padding: 5px 10px;
             border-radius: 10px;
             border: 2px solid white;
             display: flex;
             align-items: baseline;
             gap: 5px;
+            font-variant-numeric: tabular-nums;
+            /* Monospaced digits */
+            font-feature-settings: "tnum";
+            width: 160px;
+            /* Fixed width */
+            justify-content: center;
+            /* margin: 0 auto; REMOVED from default/desktop to prevent centering there */
         }
 
         .seconds {
@@ -295,7 +340,8 @@
         .col-time {
             width: 130px;
             /* Widened for "A l'approche" */
-            font-size: 2.2em;
+            font-size: 1.8em;
+            /* Reduced from 2.2em for harmony */
             font-weight: 800;
             /* Extra Bold */
             color: var(--text-yellow);
@@ -305,7 +351,8 @@
         }
 
         .col-time.text-small {
-            font-size: 1.2em;
+            font-size: 1.1em;
+            /* Slightly adjusted for balance */
             /* Smaller font for "A l'approche" */
         }
 
@@ -425,6 +472,92 @@
 
         .error {
             color: #ff6666;
+        }
+
+        /* Mobile Responsiveness - Trigger on Portrait Mode */
+        @media (orientation: portrait) {
+            header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 15px;
+                padding: 15px;
+            }
+
+            .controls-container {
+                width: 100%;
+                max-width: none;
+            }
+
+            .clock {
+                text-align: center;
+                font-size: 2.5em;
+                /* Force Desktop Size */
+                margin-top: 5px;
+                justify-content: center;
+                width: 160px;
+                /* Fixed width */
+                box-sizing: border-box;
+                margin: 0 auto;
+                /* Center in portrait */
+            }
+
+            /* Adjust search results position for mobile */
+            .search-results {
+                width: 100%;
+                left: 0;
+            }
+
+            /* Mobile Schedule Layout - CSS Grid for Strict Structure */
+            .schedule-row {
+                display: grid;
+                grid-template-columns: auto auto auto;
+                grid-template-rows: auto auto;
+                grid-template-areas:
+                    "mission time line"
+                    "dest dest dest";
+                gap: 5px;
+                height: auto;
+                padding-bottom: 15px;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .col-mission {
+                grid-area: mission;
+                border-right: 1px solid #0055a4;
+                /* Keep border */
+            }
+
+            .col-time {
+                grid-area: time;
+            }
+
+            .col-line {
+                grid-area: line;
+            }
+
+            .col-dest {
+                grid-area: dest;
+                width: 100%;
+                box-sizing: border-box;
+                margin-top: 5px;
+                padding-left: 0;
+                text-align: center;
+                /* border-top: 1px solid #004080; */
+                padding-top: 5px;
+                /* Flex properties removed */
+            }
+
+            .destination-name {
+                white-space: normal;
+                font-size: 1.2em;
+                line-height: 1.3;
+            }
+
+            .station-info h1 {
+                text-align: center;
+                /* Center only in portrait */
+            }
         }
     </style>
 </head>
