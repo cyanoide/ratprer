@@ -377,28 +377,32 @@
         .line-icon-tram {
             display: flex;
             flex-direction: column;
-            width: 42px;
-            height: 24px;
+            width: 36px;
+            /* Narrower */
+            height: 32px;
+            /* Taller relative to width */
             background-color: white;
-            border-radius: 4px;
+            border-radius: 5px;
+            /* Slightly smaller radius */
             overflow: hidden;
             margin-right: 5px;
-            box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
         }
 
         .line-icon-tram-small {
-            width: 32px;
-            height: 18px;
+            width: 30px;
+            height: 26px;
             margin-right: 4px;
         }
 
         .tram-bar {
-            height: 4px;
+            height: 5px;
+            /* Balanced thickness */
             width: 100%;
         }
 
         .line-icon-tram-small .tram-bar {
-            height: 3px;
+            height: 4px;
         }
 
         .tram-text {
@@ -406,15 +410,18 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #182b49;
+            color: black;
+            /* Force black text */
             font-family: 'Inter', sans-serif;
-            font-weight: 700;
-            font-size: 13px;
+            font-weight: 800;
+            /* Extra bold */
+            font-size: 14px;
+            /* Adjusted font size */
             line-height: 1;
         }
 
         .line-icon-tram-small .tram-text {
-            font-size: 10px;
+            font-size: 11px;
         }
 
         .line-icon-small {
@@ -831,6 +838,14 @@
 
         // --- Helper: Create Line Icon ---
         function createLineIcon(label, mode, colorHex, textColorHex, isSmall = false) {
+            // mode can be: 'RER', 'Metro' (or 'Métro'), 'Tramway', 'Train', 'Bus', 'Noctilien'
+
+            // Force black text for Tramway because of the "sandwich" style (White center)
+            if (mode === 'Tramway') {
+                textColorHex = '000000';
+            }
+
+            // Tram Special Style (Sandwich: Color - White - Color)
             if (mode === 'Tramway') {
                 const container = document.createElement('div');
                 container.className = isSmall ? 'line-icon-tram line-icon-tram-small' : 'line-icon-tram';
