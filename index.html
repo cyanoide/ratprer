@@ -1,60 +1,158 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🚇 Ma Gare RATP</title>
-    <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚇</text></svg>">
+    <title>Ma Gare RATP</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚇</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #1a1a1a;
-            --header-bg: #2b2b2b;
-            --row-bg-1: #003366;
-            /* Dark Blue for rows */
-            --row-bg-2: #004080;
-            /* Slightly lighter for alternating? Or just same */
-            --text-white: #ffffff;
-            --text-yellow: #ffcc00;
-            /* RATP Yellow for time */
-            --rer-b-color: #5291ce;
-            --t10-olive: #6E6E00;
-            /* Olive green for T10 bars */
-            --delay-color: #ff9999;
+            --ratp-azur: #003ca6;
+            --ratp-bleu: #050d9e;
+            --ratp-bouton-dor: #ffcd00;
+            --ratp-blanc: #ffffff;
+            --ratp-noir: #000000;
+            --ratp-perle: #cdc3bb;
+            --ratp-ocre: #c9910d;
+            --ratp-emeraude: #00945d;
+            --ratp-coquelicot: #e2231a;
+            --ratp-prairie: #00ae41;
+            --ratp-elysee: #777779;
         }
+
+        /* ===== DARK ===== */
+        [data-theme="dark"] {
+            --bg-body: #000000;
+            --bg-main: #291c84;
+            --bg-card: #ffffff;
+            --bg-header: #291c84;
+            --bg-filter-bar: #291c84;
+            --bg-row-1: #ffffff;
+            --bg-row-2: #f0f0f8;
+            --bg-time-box: #2a2a2a;
+            --bg-detail: #1a1260;
+            --text-primary: #291c84;
+            --text-on-dark: #ffffff;
+            --text-on-card: #291c84;
+            --text-ontime: #00ae41;
+            --text-delay: #924620;
+            --text-sub: #777779;
+            --border-card: #291c84;
+            --border-row: #e8e8f0;
+            --shadow-card: 0 2px 12px rgba(0,0,0,0.3);
+            --toggle-bg: rgba(255,255,255,0.15);
+            --toggle-border: rgba(255,255,255,0.3);
+            --search-bg: rgba(255,255,255,0.12);
+            --search-border: rgba(255,255,255,0.2);
+            --search-text: #ffffff;
+            --search-placeholder: rgba(255,255,255,0.55);
+            --scroll-thumb: rgba(255,255,255,0.2);
+            --dot-passed-bg: #8888aa;
+            --dot-passed-border: #aaaacc;
+            --name-passed: #8888aa;
+            --name-future: #c0c8ff;
+            --name-current: #ffcd00;
+            --time-passed: #8888aa;
+            --time-future: #ffcd00;
+            --connector-passed: #6666aa;
+            --detail-loading: #9999cc;
+            --detail-error: #e2231a;
+            --btn-expand-bg: rgba(255,255,255,0.08);
+            --btn-expand-border: rgba(255,255,255,0.2);
+            --btn-expand-color: #c0c8ff;
+            --btn-expand-hover: rgba(255,255,255,0.15);
+            --btn-expanded-bg: #ffcd00;
+            --btn-expanded-color: #291c84;
+            --mobile-name-color: #ffffff;
+            --mobile-name-current: #ffcd00;
+            --mobile-name-passed: #8888aa;
+            --mobile-time-color: #ffcd00;
+            --mobile-time-passed: #8888aa;
+            --subtitle-bg: #924620;
+        }
+
+        /* ===== LIGHT ===== */
+        [data-theme="light"] {
+            --bg-body: #f2f2f6;
+            --bg-main: #f2f2f6;
+            --bg-card: #ffffff;
+            --bg-header: #003ca6;
+            --bg-filter-bar: #ffffff;
+            --bg-row-1: #ffffff;
+            --bg-row-2: #f7f8fc;
+            --bg-time-box: #2a2a2a;
+            --bg-detail: #eef1f8;
+            --text-primary: #003ca6;
+            --text-on-dark: #ffffff;
+            --text-on-card: #003ca6;
+            --text-ontime: #00ae41;
+            --text-delay: #c9910d;
+            --text-sub: #777779;
+            --border-card: #dde0ea;
+            --border-row: #eaedf2;
+            --shadow-card: 0 2px 8px rgba(0,0,0,0.06);
+            --toggle-bg: rgba(255,255,255,0.15);
+            --toggle-border: rgba(255,255,255,0.3);
+            --search-bg: rgba(255,255,255,0.18);
+            --search-border: rgba(255,255,255,0.25);
+            --search-text: #ffffff;
+            --search-placeholder: rgba(255,255,255,0.6);
+            --scroll-thumb: #c0c4cc;
+            --dot-passed-bg: #c8cad4;
+            --dot-passed-border: #dddfe6;
+            --name-passed: #b0b4be;
+            --name-future: #003ca6;
+            --name-current: #003ca6;
+            --time-passed: #b0b4be;
+            --time-future: #c9910d;
+            --connector-passed: #c8cad4;
+            --detail-loading: #999;
+            --detail-error: #e2231a;
+            --btn-expand-bg: #f0f2f8;
+            --btn-expand-border: #dde0ea;
+            --btn-expand-color: #003ca6;
+            --btn-expand-hover: #e4e8f4;
+            --btn-expanded-bg: #003ca6;
+            --btn-expanded-color: #ffffff;
+            --mobile-name-color: #1a1a2e;
+            --mobile-name-current: #003ca6;
+            --mobile-name-passed: #b0b4be;
+            --mobile-time-color: #c9910d;
+            --mobile-time-passed: #c0c4cc;
+            --subtitle-bg: #c9910d;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-white);
-            margin: 0;
-            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-on-dark);
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            transition: background-color 0.4s;
         }
 
-        /* Header */
+        /* ===== HEADER ===== */
         header {
-            background-color: var(--header-bg);
-            padding: 10px 20px;
+            background: var(--bg-header);
+            padding: 12px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid #444;
+            position: relative;
+            z-index: 200;
         }
 
-        /* Header Controls */
         .controls-container {
             display: flex;
-            justify-content: flex-start;
-            /* Changed from space-between to flex-start for better grouping */
             align-items: center;
             width: 100%;
-            max-width: 800px;
-            /* margin-bottom: 20px; REMOVED */
+            max-width: 820px;
             gap: 10px;
         }
 
@@ -63,539 +161,684 @@
             flex-grow: 1;
             display: flex;
             align-items: center;
-            background-color: #333;
-            /* Box background */
-            border-radius: 30px;
-            /* Rounded pill shape */
-            padding: 0 15px;
-            /* Adjusted padding for fixed height */
-            height: 40px;
-            /* Fixed height for harmonization */
-            box-sizing: border-box;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-            border: 1px solid #555;
-            transition: border-color 0.3s, box-shadow 0.3s;
+            background-color: var(--search-bg);
+            backdrop-filter: blur(8px);
+            border-radius: 24px;
+            padding: 0 16px;
+            height: 42px;
+            border: 1px solid var(--search-border);
+            transition: all 0.3s;
+            z-index: 210;
         }
 
         .search-wrapper:focus-within {
-            border-color: #0055c8;
-            /* Highlight on focus */
-            box-shadow: 0 0 8px rgba(0, 85, 200, 0.5);
+            background-color: rgba(255,255,255,0.3);
+            border-color: rgba(255,255,255,0.5);
+            box-shadow: 0 0 0 3px rgba(255,255,255,0.12);
         }
 
         #station-search {
             width: 100%;
-            padding: 10px;
+            padding: 8px;
             border: none;
             background: transparent;
-            /* Transparent to blend with wrapper */
-            color: #ffffff;
-            font-size: 16px;
+            color: var(--search-text);
+            font-size: 15px;
+            font-weight: 500;
             outline: none;
         }
 
-        /* Scrollbar Styling */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
+        #station-search::placeholder { color: var(--search-placeholder); }
 
-        ::-webkit-scrollbar-track {
-            background: #2b2b2b;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #555;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #777;
-        }
-
-        #search-btn {
-            background: none;
-            border: none;
-            color: #aaa;
-            cursor: pointer;
-            font-size: 18px;
-            padding: 5px;
-            transition: color 0.3s;
-        }
-
-        #search-btn:hover {
-            color: white;
-        }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--scroll-thumb); border-radius: 3px; }
 
         .search-results {
             position: absolute;
-            top: 100%;
+            top: calc(100% + 8px);
             left: 0;
             width: 100%;
-            background-color: #333;
-            border: 1px solid #555;
-            border-radius: 15px;
-            /* Fully rounded corners */
-            margin-top: 8px;
-            /* Separation from search bar */
-            z-index: 1000;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 16px;
+            z-index: 220;
             max-height: 400px;
             overflow-y: auto;
             display: none;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            /* Stronger shadow for floating effect */
-            /* overflow: hidden; REMOVED to allow scrolling */
+            box-shadow: 0 8px 30px rgba(0,0,0,0.22);
         }
 
         .search-result-item {
-            padding: 12px 15px;
+            padding: 12px 16px;
             cursor: pointer;
-            border-bottom: 1px solid #444;
+            border-bottom: 1px solid var(--border-row);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: background-color 0.2s;
+            transition: background-color 0.15s;
         }
 
-        .search-result-item:last-child {
-            border-bottom: none;
-        }
+        .search-result-item:last-child { border-bottom: none; }
+        .search-result-item:hover { background-color: #eef0fa; }
+        .search-result-item:first-child { border-radius: 16px 16px 0 0; }
+        .search-result-item:last-child:first-child { border-radius: 16px; }
+        .search-result-item:last-child:not(:first-child) { border-radius: 0 0 16px 16px; }
 
-        .search-result-item:hover {
-            background-color: #444;
-        }
-
-        .result-text {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-
-        .result-name {
-            font-weight: 700;
-            color: #fff;
-            font-size: 1.1em;
-        }
-
-        .result-city {
-            font-size: 0.85em;
-            color: #aaa;
-        }
-
-        .result-lines {
-            display: flex;
-            gap: 4px;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-            max-width: 40%;
-        }
+        .result-text { display: flex; flex-direction: column; gap: 2px; }
+        .result-name { font-weight: 700; color: var(--text-primary); font-size: 1em; }
+        .result-city { font-size: 0.82em; color: var(--text-sub); }
+        .result-lines { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; max-width: 45%; }
 
         .favorites-wrapper select {
-            background-color: #333;
-            color: var(--text-yellow);
-            border: 1px solid #555;
-            padding: 0 15px;
-            /* Adjusted padding */
-            height: 40px;
-            /* Fixed height */
-            line-height: 38px;
-            /* Vertically center text */
-            box-sizing: border-box;
-            /* More padding for pill shape */
-            border-radius: 30px;
-            /* Rounded pill */
+            background-color: var(--toggle-bg);
+            color: #ffffff;
+            border: 1px solid var(--toggle-border);
+            padding: 0 14px;
+            height: 42px;
+            line-height: 40px;
+            border-radius: 24px;
             font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
             cursor: pointer;
             outline: none;
             appearance: none;
-            /* Remove default arrow to style better if needed, or keep simple */
             -webkit-appearance: none;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-            transition: border-color 0.3s, box-shadow 0.3s;
-            /* Fixed width constraints */
-            width: 150px;
-            max-width: 150px;
+            width: 140px;
+            max-width: 140px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
 
-        .favorites-wrapper select:focus {
-            border-color: #0055c8;
-            box-shadow: 0 0 8px rgba(0, 85, 200, 0.5);
+        .favorites-wrapper select option {
+            background-color: var(--bg-card);
+            color: var(--text-primary);
         }
 
-        .btn-favorite {
-            background-color: #333;
-            /* Dark background for the circle */
-            border: 1px solid #555;
+        .btn-favorite, .btn-theme {
+            background-color: var(--toggle-bg);
+            border: 1px solid var(--toggle-border);
             border-radius: 50%;
-            /* Perfect circle */
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             flex-shrink: 0;
-            /* Prevent deformation */
-            height: 40px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.5em;
-            /* Slightly smaller icon to fit in circle */
+            font-size: 1.3em;
             cursor: pointer;
             color: white;
             transition: all 0.2s;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
             padding: 0;
-            /* Reset padding */
         }
 
-        .btn-favorite:hover {
-            transform: scale(1.05);
-            background-color: #444;
-            border-color: #777;
+        .btn-favorite:hover, .btn-theme:hover {
+            transform: scale(1.08);
+            background-color: rgba(255,255,255,0.25);
         }
 
-        /* Station Info */
-        .station-info {
-            padding: 10px 20px;
-            background-color: #222;
-            border-bottom: 1px solid #333;
+        /* Station Banner */
+        .station-banner {
+            background: var(--bg-main);
+            padding: 0 20px 16px;
         }
 
-        .station-info h1 {
-            margin: 0;
-            font-size: 1.5em;
-            color: #ddd;
-            /* text-align: center; REMOVED - handled in media query */
+        [data-theme="dark"] .station-banner { padding-top: 12px; }
+
+        [data-theme="light"] .station-banner {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border-card);
+            padding: 14px 20px;
         }
 
+        .station-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 16px 20px;
+            box-shadow: var(--shadow-card);
+        }
+
+        [data-theme="light"] .station-card { box-shadow: none; padding: 0; }
+
+        .station-name-bar {
+            background: var(--bg-header);
+            padding: 8px 20px;
+            border-radius: 8px 8px 0 0;
+            text-align: center;
+        }
+
+        [data-theme="light"] .station-name-bar { border-radius: 8px; }
+
+        .station-name-bar h1 { color: #ffffff; font-size: 1.3em; font-weight: 800; }
+
+        .station-subtitle {
+            background: var(--subtitle-bg);
+            padding: 4px 16px;
+            border-radius: 0 0 8px 8px;
+            text-align: center;
+        }
+
+        [data-theme="light"] .station-subtitle { display: none; }
+
+        .station-subtitle span { color: #ffffff; font-size: 0.85em; font-weight: 700; }
+
+        /* Clock */
         .clock {
-            font-size: 2.5em;
-            font-weight: bold;
+            font-size: 1.8em;
+            font-weight: 800;
             color: white;
-            background-color: #000080;
-            /* Dark blue box for clock */
-            padding: 5px 10px;
-            border-radius: 10px;
-            border: 2px solid white;
+            background-color: rgba(0,0,0,0.25);
+            padding: 4px 12px;
+            border-radius: 12px;
+            border: 2px solid rgba(255,255,255,0.25);
             display: flex;
             align-items: baseline;
-            gap: 5px;
+            gap: 3px;
             font-variant-numeric: tabular-nums;
-            /* Monospaced digits */
             font-feature-settings: "tnum";
-            width: 160px;
-            /* Fixed width */
+            min-width: 120px;
             justify-content: center;
-            /* margin: 0 auto; REMOVED from default/desktop to prevent centering there */
         }
 
-        .seconds {
-            font-size: 0.5em;
-            color: var(--text-yellow);
+        .seconds { font-size: 0.5em; color: var(--ratp-bouton-dor); }
+
+        /* ===== MODE FILTER BAR ===== */
+        .mode-filter-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 12px 20px;
+            background-color: var(--bg-filter-bar);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        /* Schedule List */
-        .schedule-container {
-            width: 100%;
+        [data-theme="light"] .mode-filter-bar {
+            border-bottom: 1px solid var(--border-card);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
         }
+
+        .mode-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            border: 2.5px solid transparent;
+            background: transparent;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .mode-toggle.active {
+            border-color: var(--ratp-azur);
+            background: rgba(0,60,166,0.06);
+        }
+
+        [data-theme="dark"] .mode-toggle.active {
+            border-color: var(--ratp-bouton-dor);
+            background: rgba(255,205,0,0.08);
+        }
+
+        .mode-toggle:not(.active) { opacity: 0.3; filter: grayscale(0.9); }
+        .mode-toggle:hover { transform: scale(1.08); }
+        .mode-logo { width: 38px; height: 38px; }
+
+        /* ===== SCHEDULE ===== */
+        .schedule-container { width: 100%; padding: 0; }
+
+        [data-theme="dark"] .schedule-container {
+            background: var(--bg-main);
+            padding: 0 16px 20px;
+        }
+
+        [data-theme="light"] .schedule-container { padding: 8px 0; }
 
         .schedule-row {
             display: flex;
             align-items: center;
-            background-color: var(--row-bg-1);
-            border-bottom: 1px solid #0055a4;
-            padding: 5px 10px;
-            height: 80px;
+            background-color: var(--bg-row-1);
+            border: 1.5px solid var(--border-card);
+            padding: 10px 14px;
+            min-height: 68px;
+            cursor: default;
+            transition: all 0.15s;
         }
 
-        .schedule-row:nth-child(even) {
-            background-color: var(--row-bg-2);
+        [data-theme="dark"] .schedule-row {
+            border-radius: 14px;
+            margin-bottom: 8px;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.15);
         }
 
-        /* Columns */
+        [data-theme="light"] .schedule-row {
+            border-left: none;
+            border-right: none;
+            border-radius: 0;
+            margin-bottom: 0;
+            border-bottom: 1px solid var(--border-row);
+            border-top: none;
+        }
+
+        .schedule-row:nth-child(4n+3), .schedule-row:nth-child(4n+4) {
+            background-color: var(--bg-row-2);
+        }
+
+        .schedule-row.has-detail { cursor: pointer; }
+        .schedule-row.has-detail:hover { background-color: #eef0fa; }
+        [data-theme="dark"] .schedule-row.has-detail:hover { background-color: #f8f8ff; }
+
         .col-mission {
-            width: 120px;
+            width: 85px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            border-right: 1px solid #0055a4;
             padding-right: 10px;
         }
 
-        .mission-code {
-            font-size: 1.4em;
-            font-weight: 800;
-            /* Extra Bold */
-            text-transform: uppercase;
-        }
+        .mission-code { font-size: 1.2em; font-weight: 800; text-transform: uppercase; color: var(--text-on-card); }
+        .mission-status { font-size: 0.75em; margin-top: 2px; font-weight: 700; }
 
-        .mission-status {
-            font-size: 0.9em;
-            margin-top: 2px;
-        }
+        .col-time { width: 100px; display: flex; justify-content: center; align-items: center; }
 
-        .col-time {
-            width: 130px;
-            /* Widened for "A l'approche" */
-            font-size: 1.8em;
-            /* Reduced from 2.2em for harmony */
-            font-weight: 800;
-            /* Extra Bold */
-            color: var(--text-yellow);
-            text-align: center;
-            padding: 0 15px;
-            white-space: nowrap;
-        }
-
-        .col-time.text-small {
-            font-size: 1.1em;
-            /* Slightly adjusted for balance */
-            /* Smaller font for "A l'approche" */
-        }
-
-        .col-line {
-            width: 70px;
+        .time-box {
+            background: var(--bg-time-box);
+            border-radius: 10px;
+            padding: 6px 12px;
+            min-width: 70px;
             display: flex;
             justify-content: center;
             align-items: center;
         }
+
+        .time-value { font-size: 1.35em; font-weight: 800; color: var(--ratp-bouton-dor); white-space: nowrap; text-align: center; }
+        .time-value.text-small { font-size: 0.85em; font-weight: 700; }
+
+        .col-line { width: 55px; display: flex; justify-content: center; align-items: center; }
 
         .line-icon {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: 800;
-            font-size: 1.2em;
-            /* Border radius handled dynamically in JS */
+            width: 36px; height: 36px;
+            display: flex; justify-content: center; align-items: center;
+            font-weight: 800; font-size: 1.05em;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
         }
 
         .line-icon-tram {
-            display: flex;
-            flex-direction: column;
-            width: 36px;
-            /* Narrower */
-            height: 32px;
-            /* Taller relative to width */
-            background-color: white;
-            border-radius: 5px;
-            /* Slightly smaller radius */
+            display: flex; flex-direction: column;
+            width: 34px; height: 28px;
+            background-color: white; border-radius: 4px;
             overflow: hidden;
-            margin-right: 5px;
-            box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
         }
 
-        .line-icon-tram-small {
-            width: 30px;
-            height: 26px;
-            margin-right: 4px;
-        }
-
-        .tram-bar {
-            height: 5px;
-            /* Balanced thickness */
-            width: 100%;
-        }
-
-        .line-icon-tram-small .tram-bar {
-            height: 4px;
-        }
+        .line-icon-tram-small { width: 26px; height: 22px; }
+        .tram-bar { height: 4px; width: 100%; }
+        .line-icon-tram-small .tram-bar { height: 3px; }
 
         .tram-text {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: black;
-            /* Force black text */
-            font-family: 'Inter', sans-serif;
-            font-weight: 800;
-            /* Extra bold */
-            font-size: 14px;
-            /* Adjusted font size */
-            line-height: 1;
+            flex: 1; display: flex; align-items: center; justify-content: center;
+            color: black; font-family: 'Inter', sans-serif;
+            font-weight: 800; font-size: 12px; line-height: 1;
         }
 
-        .line-icon-tram-small .tram-text {
-            font-size: 11px;
-        }
-
-        .line-icon-small {
-            width: 24px;
-            height: 24px;
-            font-size: 0.8em;
-            ``` border-radius: 4px;
-            /* Default small radius */
-        }
-
-        .line-icon-wide {
-            width: 60px;
-            /* Increased from 50px for better spacing */
-            padding: 0;
-            border-radius: 4px;
-            justify-content: center;
-            /* Center text */
-        }
+        .line-icon-tram-small .tram-text { font-size: 9px; }
+        .line-icon-small { width: 24px; height: 24px; font-size: 0.7em; border-radius: 4px; }
+        .line-icon-wide { width: 52px; padding: 0; border-radius: 4px; justify-content: center; }
 
         .col-dest {
-            flex: 1;
-            padding-left: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            min-width: 0;
-            /* Important for ellipsis to work in flex child */
+            flex: 1; padding-left: 14px;
+            display: flex; flex-direction: column;
+            justify-content: center; min-width: 0;
         }
 
         .destination-name {
-            font-size: 1.5em;
-            /* Fixed consistent size */
-            font-weight: 700;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            line-height: 1.2;
+            font-size: 1.15em; font-weight: 700; color: var(--text-on-card);
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.3;
         }
 
         .destination-sub {
-            font-size: 1em;
-            color: #aaccff;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            font-size: 0.8em; color: var(--text-sub);
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
         }
 
-        .loading,
-        .error {
-            padding: 40px;
-            text-align: center;
-            font-size: 1.5em;
-            color: #aaa;
+        .col-expand { width: 40px; display: flex; justify-content: center; align-items: center; }
+
+        .btn-expand {
+            background: var(--btn-expand-bg);
+            border: 1.5px solid var(--btn-expand-border);
+            color: var(--btn-expand-color);
+            border-radius: 50%; width: 28px; height: 28px;
+            cursor: pointer; font-size: 11px;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.25s;
         }
 
-        .error {
-            color: #ff6666;
+        .btn-expand:hover { background-color: var(--btn-expand-hover); }
+
+        .btn-expand.expanded {
+            transform: rotate(180deg);
+            background-color: var(--btn-expanded-bg);
+            border-color: var(--btn-expanded-bg);
+            color: var(--btn-expanded-color);
         }
 
-        /* Mobile Responsiveness - Trigger on Portrait Mode */
+        .loading, .error { padding: 50px 20px; text-align: center; font-size: 1.15em; color: var(--text-sub); }
+        .error { color: var(--ratp-coquelicot); }
+
+        /* ===== LINE DETAIL ===== */
+        .line-detail-wrapper {
+            overflow: hidden; max-height: 0;
+            transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1);
+            background: var(--bg-detail);
+        }
+
+        [data-theme="dark"] .line-detail-wrapper {
+            border-radius: 0 0 14px 14px;
+            margin-top: -8px; margin-bottom: 8px;
+        }
+
+        [data-theme="light"] .line-detail-wrapper { border-bottom: 1px solid var(--border-row); }
+
+        .line-detail-wrapper.open { max-height: 900px; }
+
+        .line-detail { padding: 20px 15px 24px; }
+
+        .line-diagram {
+            display: flex; flex-direction: column; align-items: flex-start;
+            overflow-x: auto; overflow-y: hidden;
+            padding: 10px 30px 16px 30px;
+            scrollbar-width: thin;
+        }
+
+        .line-diagram::-webkit-scrollbar { height: 4px; }
+        .line-diagram::-webkit-scrollbar-track { background: transparent; }
+        .line-diagram::-webkit-scrollbar-thumb { background: var(--scroll-thumb); border-radius: 2px; }
+
+        /* Station names */
+        .station-names-row { display: flex; align-items: flex-end; height: 110px; margin-bottom: 4px; }
+
+        .station-name-cell {
+            width: 72px; min-width: 72px;
+            display: flex; justify-content: center; align-items: flex-end;
+            height: 110px; position: relative;
+        }
+
+        .station-name-text {
+            position: absolute; bottom: 0; left: 50%;
+            transform-origin: bottom left; transform: rotate(-50deg);
+            white-space: nowrap; font-size: 0.68em; font-weight: 600;
+            color: var(--name-future);
+            max-width: 130px; overflow: hidden; text-overflow: ellipsis;
+        }
+
+        .station-name-text.current-station { color: var(--name-current); font-weight: 800; font-size: 0.78em; }
+        .station-name-text.passed-station { color: var(--name-passed); }
+
+        /* Dots row */
+        .station-dots-row {
+            display: flex; align-items: center;
+            position: relative; padding: 6px 0;
+        }
+
+        .station-dot-cell {
+            width: 72px; min-width: 72px;
+            display: flex; justify-content: center; align-items: center;
+            position: relative; z-index: 2;
+        }
+
+        .station-dot {
+            width: 14px; height: 14px; border-radius: 50%;
+            border: 3px solid white;
+            position: relative; z-index: 3;
+            transition: all 0.3s;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+        }
+
+        .station-dot.current {
+            width: 22px; height: 22px;
+            background-color: var(--ratp-bouton-dor) !important;
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 4px rgba(255,205,0,0.25), 0 2px 8px rgba(255,205,0,0.35);
+            animation: currentBreathing 3s ease-in-out infinite;
+        }
+
+        .station-dot.passed {
+            background-color: var(--dot-passed-bg) !important;
+            border-color: var(--dot-passed-border);
+            box-shadow: none;
+        }
+
+        .station-dot.future { animation: breathing 3.5s ease-in-out infinite; }
+
+        .station-dot.future:nth-child(3n+1) { animation-delay: 0s; }
+        .station-dot.future:nth-child(3n+2) { animation-delay: 1.17s; }
+        .station-dot.future:nth-child(3n) { animation-delay: 2.33s; }
+
+        @keyframes breathing {
+            0%, 100% { opacity: 0.35; transform: scale(0.85); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+
+        @keyframes currentBreathing {
+            0%, 100% {
+                box-shadow: 0 0 0 4px rgba(255,205,0,0.15), 0 2px 6px rgba(255,205,0,0.2);
+                transform: scale(0.95);
+            }
+            50% {
+                box-shadow: 0 0 0 7px rgba(255,205,0,0.3), 0 2px 14px rgba(255,205,0,0.5);
+                transform: scale(1.05);
+            }
+        }
+
+        /* Per-segment connectors */
+        .segment-connector {
+            position: absolute;
+            top: 50%;
+            height: 5px;
+            transform: translateY(-50%);
+            z-index: 1;
+            border-radius: 3px;
+        }
+
+        .segment-connector.dashed {
+            background: none !important;
+            border-top: 3px dashed;
+            height: 0;
+            border-radius: 0;
+        }
+
+        /* Mobile vertical connectors (hidden on desktop) */
+        .mobile-vconnector { display: none; }
+
+        /* Times row */
+        .station-times-row { display: flex; align-items: flex-start; margin-top: 4px; }
+
+        .station-time-cell {
+            width: 72px; min-width: 72px;
+            text-align: center; font-size: 0.68em; font-weight: 700;
+            color: var(--time-future);
+        }
+
+        .station-time-cell.passed { color: var(--time-passed); }
+        .station-time-cell.current { color: var(--name-current); font-weight: 800; font-size: 0.75em; }
+
+        .line-detail-loading { text-align: center; padding: 30px; color: var(--detail-loading); font-size: 0.95em; }
+        .line-detail-error { text-align: center; padding: 20px; color: var(--detail-error); font-size: 0.9em; }
+
+        /* ===== MOBILE ===== */
         @media (orientation: portrait) {
-            header {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 15px;
-                padding: 15px;
-            }
-
+            header { flex-direction: column; align-items: stretch; gap: 8px; padding: 14px 16px; }
             .controls-container {
-                width: 100%;
-                max-width: none;
-            }
-
-            .clock {
-                text-align: center;
-                font-size: 2.5em;
-                /* Force Desktop Size */
-                margin-top: 5px;
+                width: 100%; max-width: none;
+                flex-wrap: wrap; gap: 8px;
                 justify-content: center;
-                width: 160px;
-                /* Fixed width */
-                box-sizing: border-box;
-                margin: 0 auto;
-                /* Center in portrait */
             }
+            .search-wrapper { flex-basis: 100%; }
+            .favorites-wrapper { flex: 0 0 auto; }
+            .clock { font-size: 1.8em; margin: 0 auto; min-width: 120px; }
+            .search-results { width: 100%; left: 0; }
+            .mode-filter-bar { gap: 8px; padding: 8px 12px; }
+            .mode-toggle { width: 44px; height: 44px; border-radius: 12px; }
+            .mode-logo { width: 32px; height: 32px; }
 
-            /* Adjust search results position for mobile */
-            .search-results {
-                width: 100%;
-                left: 0;
-            }
-
-            /* Mobile Schedule Layout - CSS Grid for Strict Structure */
             .schedule-row {
                 display: grid;
-                grid-template-columns: auto auto auto;
-                grid-template-rows: auto auto;
-                grid-template-areas:
-                    "mission time line"
-                    "dest dest dest";
-                gap: 5px;
-                height: auto;
-                padding-bottom: 15px;
-                justify-content: center;
+                grid-template-columns: auto auto auto 1fr auto;
+                grid-template-areas: "mission time line dest expand";
+                gap: 4px; min-height: auto; padding: 10px 10px; align-items: center;
+            }
+
+            [data-theme="dark"] .schedule-row { border-radius: 12px; }
+
+            .col-mission { grid-area: mission; width: 70px; padding-right: 6px; }
+            .col-time { grid-area: time; width: auto; }
+            .time-value { font-size: 1.1em; }
+            .time-box { padding: 4px 8px; min-width: 60px; }
+            .col-line { grid-area: line; width: auto; }
+            .col-dest { grid-area: dest; padding-left: 8px; }
+            .col-expand { grid-area: expand; width: auto; }
+            .destination-name { white-space: normal; font-size: 0.95em; line-height: 1.3; }
+            .station-name-bar h1 { font-size: 1.15em; }
+
+            .line-detail-wrapper.open { max-height: 3000px; }
+            .line-detail { padding: 16px 16px 20px; }
+
+            .line-diagram { flex-direction: column; overflow: visible; padding: 0 0 0 10px; }
+
+            .station-names-row { display: none; }
+            .station-times-row { display: none; }
+
+            .station-dots-row {
+                flex-direction: column; align-items: stretch;
+                padding: 0; margin-left: 0; position: relative;
+            }
+
+            /* Hide horizontal segments on mobile */
+            .segment-connector { display: none; }
+
+            /* All dots centered in a fixed 28px column via absolute positioning */
+            .station-dot-cell {
+                width: 100%; min-width: 0;
+                flex-direction: row; justify-content: flex-start;
                 align-items: center;
+                padding: 12px 0 12px 28px; /* 28px left = fixed dot column */
+                position: relative;
+                z-index: 1;
+            }
+            .station-dot-cell.current-cell {
+                z-index: 10; /* halo passes in front of neighboring connectors */
             }
 
-            .col-mission {
-                grid-area: mission;
-                border-right: 1px solid #0055a4;
-                /* Keep border */
+            .station-dot {
+                position: absolute;
+                left: 7px; /* (28 - 14) / 2 = 7 → centered in 28px column */
+                top: 50%; transform: translateY(-50%);
+                z-index: 3; margin-right: 0;
+            }
+            .station-dot.current {
+                left: 3px; /* (28 - 22) / 2 = 3 → centered in same 28px column */
+                margin-right: 0;
             }
 
-            .col-time {
-                grid-area: time;
+            /* Vertical connectors — always centered at same x in the 28px column */
+            .mobile-vconnector {
+                display: block;
+                position: absolute;
+                left: 11px; /* -1px nudge left */
+                top: 50%;
+                height: 100%; /* exact center-to-center, no overlap */
+                width: 5px;
+                border-radius: 0;
+                z-index: 1;
+            }
+            .mobile-vconnector.dashed {
+                background: none !important;
+                border-left: 3px dashed;
+                width: 0;
+                left: 12px;
             }
 
-            .col-line {
-                grid-area: line;
+            .mobile-station-info {
+                display: flex !important;
+                flex-direction: column; gap: 3px;
+                min-width: 0; flex: 1; padding-right: 12px;
             }
 
-            .col-dest {
-                grid-area: dest;
-                width: 100%;
-                box-sizing: border-box;
-                margin-top: 5px;
-                padding-left: 0;
-                text-align: center;
-                /* border-top: 1px solid #004080; */
-                padding-top: 5px;
-                /* Flex properties removed */
+            .mobile-station-name {
+                font-size: 0.95em; font-weight: 600;
+                color: var(--mobile-name-color);
+                line-height: 1.35; word-wrap: break-word;
             }
 
-            .destination-name {
-                white-space: normal;
-                font-size: 1.2em;
-                line-height: 1.3;
+            .mobile-station-name.current-station {
+                color: var(--mobile-name-current); font-weight: 800; font-size: 1.05em;
             }
 
-            .station-info h1 {
-                text-align: center;
-                /* Center only in portrait */
-            }
+            .mobile-station-name.passed-station { color: var(--mobile-name-passed); }
+
+            .mobile-station-time { font-size: 0.82em; font-weight: 700; color: var(--mobile-time-color); }
+            .mobile-station-time.passed { color: var(--mobile-time-passed); }
+        }
+
+        @media (orientation: landscape) {
+            .mobile-station-info { display: none; }
         }
     </style>
 </head>
 
 <body>
-
     <header>
         <div class="controls-container">
             <div class="search-wrapper">
-                <input type="text" id="station-search" placeholder="Rechercher une gare (RER, Métro, Tram)..."
-                    autocomplete="off">
+                <input type="text" id="station-search" placeholder="Rechercher une gare..." autocomplete="off">
                 <div id="search-results" class="search-results"></div>
             </div>
-
             <div class="favorites-wrapper" id="favorites-wrapper" style="display: none;">
                 <select id="favorites-select" onchange="loadFavorite(this.value)">
-                    <option value="" disabled selected>★ Favoris</option>
+                    <option value="" disabled selected>Favoris</option>
                 </select>
             </div>
-
-            <button id="btn-favorite" class="btn-favorite" onclick="toggleFavorite()"
-                title="Ajouter aux favoris">☆</button>
+            <button id="btn-favorite" class="btn-favorite" onclick="toggleFavorite()" title="Ajouter aux favoris">&#9734;</button>
+            <button class="btn-theme" id="btn-theme" onclick="toggleTheme()" title="Changer de theme">&#9790;</button>
         </div>
-
         <div class="clock" id="clock">
             <span id="clock-time">--:--</span><span class="seconds" id="clock-seconds">00</span>
         </div>
     </header>
 
-    <div class="station-info" id="station-info">
-        <h1 id="current-station-name">Sélectionnez une gare</h1>
+    <div class="mode-filter-bar" id="mode-filter-bar">
+        <div class="mode-toggle active" data-mode="Metro" onclick="toggleMode('Metro')" title="Metro">
+            <svg class="mode-logo" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="#003ca6" stroke-width="6"/><text x="50" y="66" text-anchor="middle" fill="#003ca6" font-family="Inter,Arial,sans-serif" font-weight="900" font-size="52">M</text></svg>
+        </div>
+        <div class="mode-toggle active" data-mode="RER" onclick="toggleMode('RER')" title="RER">
+            <svg class="mode-logo" viewBox="0 0 100 100"><rect x="4" y="18" width="92" height="64" rx="16" fill="none" stroke="#003ca6" stroke-width="5"/><text x="50" y="63" text-anchor="middle" fill="#003ca6" font-family="Inter,Arial,sans-serif" font-weight="800" font-size="34">RER</text></svg>
+        </div>
+        <div class="mode-toggle active" data-mode="Tramway" onclick="toggleMode('Tramway')" title="Tramway">
+            <svg class="mode-logo" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="#003ca6" stroke-width="6"/><text x="50" y="68" text-anchor="middle" fill="#003ca6" font-family="Inter,Arial,sans-serif" font-weight="900" font-size="56">T</text></svg>
+        </div>
+        <div class="mode-toggle active" data-mode="Bus" onclick="toggleMode('Bus')" title="Bus">
+            <svg class="mode-logo" viewBox="0 0 100 100"><rect x="4" y="18" width="92" height="64" rx="16" fill="none" stroke="#003ca6" stroke-width="5"/><text x="50" y="63" text-anchor="middle" fill="#003ca6" font-family="Inter,Arial,sans-serif" font-weight="800" font-size="34">BUS</text></svg>
+        </div>
+        <div class="mode-toggle active" data-mode="Train" onclick="toggleMode('Train')" title="Transilien">
+            <svg class="mode-logo" viewBox="0 0 100 100"><rect x="4" y="4" width="92" height="92" rx="16" fill="#003ca6"/><rect x="30" y="22" width="40" height="42" rx="8" fill="none" stroke="white" stroke-width="4"/><rect x="36" y="28" width="12" height="14" rx="2" fill="white"/><rect x="52" y="28" width="12" height="14" rx="2" fill="white"/><line x1="30" y1="50" x2="70" y2="50" stroke="white" stroke-width="3"/><circle cx="38" cy="72" r="5" fill="white"/><circle cx="62" cy="72" r="5" fill="white"/><line x1="38" y1="64" x2="38" y2="67" stroke="white" stroke-width="4"/><line x1="62" y1="64" x2="62" y2="67" stroke="white" stroke-width="4"/></svg>
+        </div>
+    </div>
+
+    <div class="station-banner" id="station-banner">
+        <div class="station-card">
+            <div class="station-name-bar"><h1 id="current-station-name">Selectionnez une gare</h1></div>
+            <div class="station-subtitle"><span>RATP &amp; Transiliens</span></div>
+        </div>
     </div>
 
     <div class="schedule-container" id="schedule-container">
@@ -604,12 +847,15 @@
 
     <script>
         const API_KEY = 'i8mKgfov1XsgmJtflIfbn10bx6iYk7zO';
-
-        // State
-        let currentStation = null; // { id, name }
+        let currentStation = null;
         let favorites = JSON.parse(localStorage.getItem('ratp_favorites')) || [];
+        let activeModes = JSON.parse(localStorage.getItem('ratp_active_modes')) || { Metro:true, RER:true, Tramway:true, Train:true, Bus:true };
+        let lastDepartures = [];
+        let expandedRows = new Set();
+        const vjCache = new Map();
+        // Cache for full route stop lists (to detect skipped stops)
+        const routeStopsCache = new Map();
 
-        // DOM Elements
         const searchInput = document.getElementById('station-search');
         const resultsDiv = document.getElementById('search-results');
         const favoritesWrapper = document.getElementById('favorites-wrapper');
@@ -618,507 +864,366 @@
         const stationNameEl = document.getElementById('current-station-name');
         const container = document.getElementById('schedule-container');
 
-        // --- Initialization ---
+        // --- Theme ---
+        function initTheme() {
+            const saved = localStorage.getItem('ratp_theme');
+            if (saved) document.documentElement.setAttribute('data-theme', saved);
+            updateThemeIcon();
+        }
+        function toggleTheme() {
+            const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('ratp_theme', next);
+            updateThemeIcon();
+        }
+        function updateThemeIcon() {
+            const btn = document.getElementById('btn-theme');
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            btn.innerHTML = isDark ? '&#9788;' : '&#9790;';
+            btn.title = isDark ? 'Mode clair' : 'Mode sombre';
+        }
+
         function init() {
-            updateClock();
-            setInterval(updateClock, 1000);
-            updateFavoritesUI();
-
-            // Load last station or default if exists
-            const lastStation = JSON.parse(localStorage.getItem('ratp_last_station'));
-            if (lastStation) {
-                selectStation(lastStation.id, lastStation.name);
-            }
-
-            // Search Listeners
-            searchInput.addEventListener('input', debounce((e) => {
-                const query = e.target.value.trim();
-                if (query.length > 2) {
-                    performSearch(query);
-                } else {
-                    resultsDiv.style.display = 'none';
-                }
+            initTheme();
+            updateClock(); setInterval(updateClock, 1000);
+            updateFavoritesUI(); initModeFilters();
+            const ls = JSON.parse(localStorage.getItem('ratp_last_station'));
+            if (ls) selectStation(ls.id, ls.name);
+            searchInput.addEventListener('input', debounce(e => {
+                const q = e.target.value.trim();
+                if (q.length > 2) performSearch(q); else resultsDiv.style.display = 'none';
             }, 500));
-
-            // Close search on click outside
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('.search-wrapper')) {
-                    resultsDiv.style.display = 'none';
-                }
-            });
+            document.addEventListener('click', e => { if (!e.target.closest('.search-wrapper')) resultsDiv.style.display = 'none'; });
         }
 
-        // --- Clock ---
         function updateClock() {
-            const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            document.getElementById('clock-time').textContent = `${hours}:${minutes}`;
-            document.getElementById('clock-seconds').textContent = seconds;
+            const n = new Date();
+            document.getElementById('clock-time').textContent = `${String(n.getHours()).padStart(2,'0')}:${String(n.getMinutes()).padStart(2,'0')}`;
+            document.getElementById('clock-seconds').textContent = String(n.getSeconds()).padStart(2,'0');
         }
 
-        // --- Search Logic ---
-        // --- Search Logic ---
-        let debounceTimer; // Unused, can be removed
+        function initModeFilters() {
+            document.querySelectorAll('.mode-toggle').forEach(b => b.classList.toggle('active', activeModes[b.dataset.mode] !== false));
+        }
+        function toggleMode(mode) {
+            activeModes[mode] = !activeModes[mode];
+            localStorage.setItem('ratp_active_modes', JSON.stringify(activeModes));
+            document.querySelector(`.mode-toggle[data-mode="${mode}"]`).classList.toggle('active', activeModes[mode]);
+            if (lastDepartures.length) renderSchedules(lastDepartures);
+        }
+        function getModeKey(cm) {
+            if (cm==='Metro'||cm==='Métro') return 'Metro';
+            return {RER:'RER',Tramway:'Tramway',Train:'Train',Bus:'Bus'}[cm]||null;
+        }
+
         const searchCache = new Map();
-        let currentSearchResults = []; // Added to store current search results
+        let currentSearchResults = [];
+        function debounce(fn, d) { let t; return function(...a) { clearTimeout(t); t = setTimeout(() => fn.apply(this,a), d); }; }
 
-        // Helper for debouncing input
-        function debounce(func, delay) {
-            let timeout;
-            return function (...args) {
-                const context = this;
-                clearTimeout(timeout);
-                timeout = setTimeout(() => func.apply(context, args), delay);
-            };
-        }
-
-        async function performSearch(query, autoSelect = false) {
-            // Check cache first
-            if (searchCache.has(query) && !autoSelect) {
-                renderSearchResults(searchCache.get(query));
-                return;
-            }
-
+        async function performSearch(query, autoSelect=false) {
+            if (searchCache.has(query) && !autoSelect) { renderSearchResults(searchCache.get(query)); return; }
             try {
-                // Use depth=2 to try and get nested line data
-                const url = `https://prim.iledefrance-mobilites.fr/marketplace/v2/navitia/places?q=${encodeURIComponent(query)}&type[]=stop_area&count=20&depth=2&disable_geojson=true`;
-                const response = await fetch(url, {
-                    headers: { 'apiKey': API_KEY }
-                });
-
-                if (response.status === 429) {
-                    console.warn('Rate limit exceeded (429). Retrying in 2s...');
-                    resultsDiv.innerHTML = '<div class="search-result-item" style="cursor:default; color:#ff9999;">Trop de requêtes. Veuillez patienter...</div>';
-                    resultsDiv.style.display = 'block';
-                    return;
-                }
-
-                if (!response.ok) throw new Error(`Erreur HTTP: ${response.status}`);
-
-                const data = await response.json();
-
-                // REVERT: Pass all places directly to render, minimal filtering if needed
-                // We just ensure it has a name and id to be safe
-                const places = (data.places || []).filter(p => p.id && p.name);
-
-                // Cache the result
-                searchCache.set(query, places);
-
-                currentSearchResults = places;
-
-                if (autoSelect && currentSearchResults.length > 0) {
-                    const first = currentSearchResults[0];
-                    selectStation(first.id, first.name);
-                    resultsDiv.style.display = 'none';
-                    searchInput.value = '';
-                } else {
-                    renderSearchResults(currentSearchResults);
-                }
-            } catch (error) {
-                console.error('Search error:', error);
-                resultsDiv.innerHTML = `<div class="search-result-item" style="cursor:default; color:#ff9999;">Erreur: ${error.message}</div>`;
-                resultsDiv.style.display = 'block';
-            }
+                const r = await fetch(`https://prim.iledefrance-mobilites.fr/marketplace/v2/navitia/places?q=${encodeURIComponent(query)}&type[]=stop_area&count=20&depth=2&disable_geojson=true`, { headers: { apiKey: API_KEY } });
+                if (r.status === 429) { resultsDiv.innerHTML = '<div class="search-result-item" style="cursor:default;color:#e2231a;">Trop de requetes...</div>'; resultsDiv.style.display = 'block'; return; }
+                if (!r.ok) throw new Error(`HTTP ${r.status}`);
+                const data = await r.json();
+                const places = (data.places||[]).filter(p => p.id && p.name);
+                searchCache.set(query, places); currentSearchResults = places;
+                if (autoSelect && places.length) { selectStation(places[0].id, places[0].name); resultsDiv.style.display='none'; searchInput.value=''; }
+                else renderSearchResults(places);
+            } catch(e) { resultsDiv.innerHTML = `<div class="search-result-item" style="cursor:default;color:#e2231a;">${e.message}</div>`; resultsDiv.style.display='block'; }
         }
 
         function renderSearchResults(places) {
-            console.log('renderSearchResults NEW VERSION called with', places.length, 'places');
-            if (places.length > 0) {
-                console.log('First place lines:', places[0].lines);
-                console.log('First place admin regions:', places[0].administrative_regions);
-            }
             resultsDiv.innerHTML = '';
-            if (places.length === 0) {
-                resultsDiv.style.display = 'none';
-                return;
-            }
-
+            if (!places.length) { resultsDiv.style.display = 'none'; return; }
             places.forEach(place => {
-                const div = document.createElement('div');
-                div.className = 'search-result-item';
-
-                // 1. Text Section (Name + City)
-                const textDiv = document.createElement('div');
-                textDiv.className = 'result-text';
-
-                const nameSpan = document.createElement('span');
-                nameSpan.className = 'result-name';
-
-                // Extract city if present in name or administrative_regions
-                let displayName = place.name;
-                let city = '';
-
-                // Try to find city in administrative regions
-                if (place.administrative_regions) {
-                    const cityRegion = place.administrative_regions.find(r => r.level === 8);
-                    if (cityRegion) city = cityRegion.name;
-                }
-
-                // Fallback: Extract from name if not found or if name contains parens
-                if (!city && displayName.includes('(')) {
-                    const match = displayName.match(/\(([^)]+)\)/);
-                    if (match) city = match[1];
-                }
-
-                // Clean up name
-                if (city && displayName.includes(`(${city})`)) {
-                    displayName = displayName.replace(`(${city})`, '').trim();
-                } else if (displayName.includes('(')) {
-                    // Generic cleanup if exact city match fails but parens exist
-                    displayName = displayName.replace(/\s*\([^)]+\)/, '').trim();
-                }
-
-                nameSpan.textContent = displayName;
-
-                const citySpan = document.createElement('span');
-                citySpan.className = 'result-city';
-                citySpan.textContent = city || '';
-
-                textDiv.appendChild(nameSpan);
-                if (city) textDiv.appendChild(citySpan);
-
-                // 2. Lines Section (Icons)
-                const linesDiv = document.createElement('div');
-                linesDiv.className = 'result-lines';
-
-                // Collect unique lines
-                const uniqueLines = [];
-                const seen = new Set();
-                let hasSpecificLines = false;
-
-                if (place.lines && place.lines.length > 0) {
-                    place.lines.forEach(line => {
-                        if (!line.commercial_mode) return;
-                        const modeId = line.commercial_mode.id.split(':')[1];
-                        if (['RapidTransit', 'Metro', 'Métro', 'Tramway'].includes(modeId)) {
-                            const key = `${modeId}-${line.code}`;
-                            if (!seen.has(key)) {
-                                seen.add(key);
-                                uniqueLines.push(line);
-                                hasSpecificLines = true;
-                            }
-                        }
-                    });
-                }
-
-                if (hasSpecificLines) {
-                    uniqueLines.slice(0, 5).forEach(line => {
-                        const modeId = line.commercial_mode.id.split(':')[1];
-                        const icon = createLineIcon(line.code, modeId, line.color, line.text_color, true);
-                        linesDiv.appendChild(icon);
-                    });
-                } else if (place.commercial_modes) {
-                    // Fallback: Use commercial_modes if no specific lines found
-                    place.commercial_modes.forEach(mode => {
-                        const modeId = mode.id.split(':')[1];
-                        if (modeId === 'Metro' || modeId === 'Métro') {
-                            linesDiv.appendChild(createLineIcon('M', 'Metro', '0055C8', 'FFFFFF', true));
-                        } else if (modeId === 'RapidTransit') {
-                            linesDiv.appendChild(createLineIcon('RER', 'RapidTransit', '0055C8', 'FFFFFF', true));
-                        } else if (modeId === 'Tramway') {
-                            linesDiv.appendChild(createLineIcon('T', 'Tramway', '888888', '182b49', true));
-                        }
-                    });
-                }
-
-                div.appendChild(textDiv);
-                div.appendChild(linesDiv);
-
-                div.onclick = () => {
-                    selectStation(place.id, place.name);
-                    resultsDiv.style.display = 'none';
-                    searchInput.value = '';
-                };
+                const div = document.createElement('div'); div.className = 'search-result-item';
+                const textDiv = document.createElement('div'); textDiv.className = 'result-text';
+                let dn = place.name, city = '';
+                if (place.administrative_regions) { const cr = place.administrative_regions.find(r=>r.level===8); if (cr) city = cr.name; }
+                if (!city && dn.includes('(')) { const m = dn.match(/\(([^)]+)\)/); if (m) city = m[1]; }
+                if (city && dn.includes(`(${city})`)) dn = dn.replace(`(${city})`,'').trim();
+                else if (dn.includes('(')) dn = dn.replace(/\s*\([^)]+\)/,'').trim();
+                const ns = document.createElement('span'); ns.className='result-name'; ns.textContent=dn; textDiv.appendChild(ns);
+                if (city) { const cs = document.createElement('span'); cs.className='result-city'; cs.textContent=city; textDiv.appendChild(cs); }
+                const ld = document.createElement('div'); ld.className = 'result-lines';
+                const uq=[], seen=new Set();
+                if (place.lines) place.lines.forEach(l => { if (!l.commercial_mode) return; const m=l.commercial_mode.id.split(':')[1]; if (['RapidTransit','Metro','Métro','Tramway'].includes(m)){const k=`${m}-${l.code}`; if(!seen.has(k)){seen.add(k);uq.push(l);}}});
+                if (uq.length) uq.slice(0,5).forEach(l => { ld.appendChild(createLineIcon(l.code, l.commercial_mode.id.split(':')[1], l.color, l.text_color, true)); });
+                else if (place.commercial_modes) place.commercial_modes.forEach(mode => { const m=mode.id.split(':')[1]; if(m==='Metro'||m==='Métro') ld.appendChild(createLineIcon('M','Metro','003ca6','FFFFFF',true)); else if(m==='RapidTransit') ld.appendChild(createLineIcon('RER','RapidTransit','003ca6','FFFFFF',true)); else if(m==='Tramway') ld.appendChild(createLineIcon('T','Tramway','003ca6','000000',true)); });
+                div.appendChild(textDiv); div.appendChild(ld);
+                div.onclick = () => { selectStation(place.id, place.name); resultsDiv.style.display='none'; searchInput.value=''; };
                 resultsDiv.appendChild(div);
             });
             resultsDiv.style.display = 'block';
         }
 
-        // --- Helper: Create Line Icon ---
-        function createLineIcon(label, mode, colorHex, textColorHex, isSmall = false) {
-            // mode can be: 'RER', 'Metro' (or 'Métro'), 'Tramway', 'Train', 'Bus', 'Noctilien'
-
-            // Force black text for Tramway because of the "sandwich" style (White center)
-            if (mode === 'Tramway') {
-                textColorHex = '000000';
+        function createLineIcon(label, mode, colorHex, textColorHex, isSmall=false) {
+            if (mode==='Tramway') textColorHex='000000';
+            if (mode==='Tramway') {
+                const c=document.createElement('div'); c.className=isSmall?'line-icon-tram line-icon-tram-small':'line-icon-tram';
+                ['top','text','bottom'].forEach(p => { if(p==='text'){const t=document.createElement('div');t.className='tram-text';t.textContent=label;c.appendChild(t);}else{const b=document.createElement('div');b.className='tram-bar';b.style.backgroundColor=`#${colorHex}`;c.appendChild(b);}});
+                return c;
             }
-
-            // Tram Special Style (Sandwich: Color - White - Color)
-            if (mode === 'Tramway') {
-                const container = document.createElement('div');
-                container.className = isSmall ? 'line-icon-tram line-icon-tram-small' : 'line-icon-tram';
-
-                const topBar = document.createElement('div');
-                topBar.className = 'tram-bar';
-                topBar.style.backgroundColor = `#${colorHex}`;
-
-                const textDiv = document.createElement('div');
-                textDiv.className = 'tram-text';
-                textDiv.textContent = label;
-                // Text color is always dark for this style
-
-                const bottomBar = document.createElement('div');
-                bottomBar.className = 'tram-bar';
-                bottomBar.style.backgroundColor = `#${colorHex}`;
-
-                container.appendChild(topBar);
-                container.appendChild(textDiv);
-                container.appendChild(bottomBar);
-
-                return container;
-            }
-
-            const div = document.createElement('div');
-            div.className = 'line-icon';
-            if (isSmall) div.classList.add('line-icon-small');
-
-            // Check for long labels (4+ chars) like "5101"
-            if (label.length >= 4) {
-                div.classList.add('line-icon-wide');
-            }
-
-            div.style.backgroundColor = `#${colorHex}`;
-            div.style.color = `#${textColorHex}`;
-            div.textContent = label;
-
-            // Shape Logic
-            if (mode === 'Metro') {
-                div.style.borderRadius = '50%'; // Circle
-            } else {
-                // RER (RapidTransit) / Train (LocalTrain)
-                div.style.borderRadius = '8px'; // Rounded Square
-            }
-
-            return div;
+            const d=document.createElement('div'); d.className='line-icon';
+            if(isSmall) d.classList.add('line-icon-small');
+            if(label.length>=4) d.classList.add('line-icon-wide');
+            d.style.backgroundColor=`#${colorHex}`; d.style.color=`#${textColorHex}`; d.textContent=label;
+            d.style.borderRadius = mode==='Metro'?'50%':'8px';
+            return d;
         }
 
-        // --- Station Selection ---
         function selectStation(id, name) {
-            currentStation = { id, name };
-            stationNameEl.textContent = name;
+            currentStation = { id, name }; stationNameEl.textContent = name;
             localStorage.setItem('ratp_last_station', JSON.stringify(currentStation));
-            updateFavoriteBtnState();
-
-            // Show loading immediately
+            updateFavoriteBtnState(); expandedRows.clear();
             container.innerHTML = '<div class="loading">Chargement des horaires...</div>';
-
             fetchSchedules();
         }
 
-        // --- Favorites ---
         function toggleFavorite() {
             if (!currentStation) return;
-
-            const index = favorites.findIndex(f => f.id === currentStation.id);
-            if (index === -1) {
-                favorites.push(currentStation);
-            } else {
-                favorites.splice(index, 1);
-            }
-
+            const i = favorites.findIndex(f=>f.id===currentStation.id);
+            if (i===-1) favorites.push(currentStation); else favorites.splice(i,1);
             localStorage.setItem('ratp_favorites', JSON.stringify(favorites));
-            updateFavoritesUI();
-            updateFavoriteBtnState();
+            updateFavoritesUI(); updateFavoriteBtnState();
         }
-
         function updateFavoritesUI() {
-            if (favorites.length === 0) {
-                favoritesWrapper.style.display = 'none';
-            } else {
-                favoritesWrapper.style.display = 'block';
-                favoritesSelect.innerHTML = '<option value="" disabled selected>★ Favoris</option>';
-                favorites.forEach(fav => {
-                    const option = document.createElement('option');
-                    option.value = fav.id; // We store ID as value
-                    option.textContent = fav.name;
-                    favoritesSelect.appendChild(option);
-                });
-            }
+            if (!favorites.length) { favoritesWrapper.style.display='none'; return; }
+            favoritesWrapper.style.display='block';
+            favoritesSelect.innerHTML='<option value="" disabled selected>Favoris</option>';
+            favorites.forEach(f=>{const o=document.createElement('option');o.value=f.id;o.textContent=f.name;favoritesSelect.appendChild(o);});
         }
-
-        function loadFavorite(id) {
-            const fav = favorites.find(f => f.id === id);
-            if (fav) {
-                selectStation(fav.id, fav.name);
-                favoritesSelect.value = ""; // Reset select
-            }
-        }
-
+        function loadFavorite(id) { const f=favorites.find(x=>x.id===id); if(f){selectStation(f.id,f.name);favoritesSelect.value='';} }
         function updateFavoriteBtnState() {
-            if (!currentStation) {
-                btnFavorite.style.display = 'none';
-                return;
-            }
-            btnFavorite.style.display = 'inline-block';
-            const isFav = favorites.some(f => f.id === currentStation.id);
-            btnFavorite.textContent = isFav ? '★' : '☆';
-            btnFavorite.style.color = isFav ? 'var(--text-yellow)' : 'white';
+            if (!currentStation){btnFavorite.style.display='none';return;}
+            btnFavorite.style.display='inline-block';
+            const isFav=favorites.some(f=>f.id===currentStation.id);
+            btnFavorite.innerHTML=isFav?'&#9733;':'&#9734;';
+            btnFavorite.style.color=isFav?'var(--ratp-bouton-dor)':'white';
         }
 
-        // --- Schedules ---
         async function fetchSchedules() {
             if (!currentStation) return;
-
-            // container.innerHTML = '<div class="loading">Chargement...</div>'; // Already set in selectStation
-
             try {
-                const response = await fetch(`https://prim.iledefrance-mobilites.fr/marketplace/v2/navitia/stop_areas/${currentStation.id}/departures?count=20`, {
-                    headers: { 'apiKey': API_KEY }
+                const r = await fetch(`https://prim.iledefrance-mobilites.fr/marketplace/v2/navitia/stop_areas/${currentStation.id}/departures?count=30`, { headers: { apiKey: API_KEY } });
+                if (!r.ok) throw new Error(`HTTP ${r.status}`);
+                const data = await r.json();
+                let deps = data.departures.filter(d => ['RER','Metro','Métro','Tramway','Train','Bus'].includes(d.display_informations.commercial_mode));
+                deps.sort((a,b) => {
+                    const ba=a.display_informations.commercial_mode==='Bus', bb=b.display_informations.commercial_mode==='Bus';
+                    if(ba&&!bb) return 1; if(!ba&&bb) return -1;
+                    return parseNavitiaDate(a.stop_date_time.departure_date_time)-parseNavitiaDate(b.stop_date_time.departure_date_time);
                 });
-
-                if (!response.ok) throw new Error(`Erreur HTTP: ${response.status}`);
-
-                const data = await response.json();
-
-                // Filter for Metro, RER, Tram
-                // API returns "Métro" with accent, "RER", "Tramway"
-                // Filter for Metro, RER, Tram, Train, and Bus
-                // API returns "Métro" with accent, "RER", "Tramway"
-                const allowedModes = ['RER', 'Metro', 'Métro', 'Tramway', 'Train', 'Bus'];
-                let departures = data.departures.filter(d =>
-                    allowedModes.includes(d.display_informations.commercial_mode)
-                );
-
-                // Sort: Metro/RER/Tram/Train first, Bus last. Then by time.
-                departures.sort((a, b) => {
-                    const modeA = a.display_informations.commercial_mode;
-                    const modeB = b.display_informations.commercial_mode;
-                    const isBusA = modeA === 'Bus';
-                    const isBusB = modeB === 'Bus';
-
-                    if (isBusA && !isBusB) return 1; // Bus goes to bottom
-                    if (!isBusA && isBusB) return -1; // Non-Bus goes to top
-
-                    // Secondary sort: Time
-                    const timeA = parseNavitiaDate(a.stop_date_time.departure_date_time);
-                    const timeB = parseNavitiaDate(b.stop_date_time.departure_date_time);
-                    return timeA - timeB;
-                });
-
-                renderSchedules(departures);
-
-            } catch (error) {
-                console.error('Erreur:', error);
-                container.innerHTML = `<div class="error">Erreur de connexion: ${error.message}</div>`;
-            }
+                lastDepartures = deps; renderSchedules(deps);
+            } catch(e) { container.innerHTML = `<div class="error">Erreur: ${e.message}</div>`; }
         }
 
         function renderSchedules(departures) {
-            if (departures.length === 0) {
-                container.innerHTML = '<div class="error">Aucun train (RER, Métro, Tram) à l\'affichage.</div>';
-                return;
+            const filtered = departures.filter(d => { const k=getModeKey(d.display_informations.commercial_mode); return k&&activeModes[k]!==false; });
+            if (!filtered.length) { container.innerHTML='<div class="error">Aucun depart avec les filtres actuels.</div>'; return; }
+            container.innerHTML = '';
+            filtered.forEach((dep,idx) => {
+                const info=dep.display_informations, ti=dep.stop_date_time;
+                let mission=info.headsign||info.trip_short_name||'';
+                if (['Tramway','Metro','Métro','Bus'].includes(info.commercial_mode)) mission='';
+                const bt=parseNavitiaDate(ti.base_departure_date_time), rt=parseNavitiaDate(ti.departure_date_time), now=new Date();
+                const delay=Math.round((rt-bt)/60000);
+                let statusText="a l'heure", statusColor='var(--text-ontime)';
+                if(delay>0){statusText=`+${delay} min`;statusColor='var(--text-delay)';}
+                const dm=Math.floor((rt-now)/60000);
+                let displayTime='', timeSmall=false;
+                if(dm<1){displayTime="A l'approche";timeSmall=true;}
+                else if(dm<10) displayTime=`${dm} min`;
+                else displayTime=rt.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+                const iconHtml=createLineIcon(info.label,info.commercial_mode,info.color,info.text_color).outerHTML;
+                let dest=info.direction.replace(/\(.*\)/,'').trim();
+                let sub=info.description||''; if(sub===info.direction) sub='';
+                // Expandable: Metro, RER, Tramway
+                const canExpand=['Metro','Métro','RER','Tramway'].includes(info.commercial_mode);
+                const depKey=`${idx}-${info.label}-${ti.departure_date_time}`;
+                const isExp=expandedRows.has(depKey);
+                let vjLink='';
+                if(dep.links){const vl=dep.links.find(l=>l.type==='vehicle_journey');if(vl)vjLink=vl.id;}
+                const row=document.createElement('div');
+                row.className='schedule-row'+(canExpand?' has-detail':'');
+                row.innerHTML=`
+                    <div class="col-mission"><div class="mission-code">${mission}</div><div class="mission-status" style="color:${statusColor};${delay>0?'font-style:italic;':''}">${statusText}</div></div>
+                    <div class="col-time"><div class="time-box"><div class="time-value ${timeSmall?'text-small':''}">${displayTime}</div></div></div>
+                    <div class="col-line">${iconHtml}</div>
+                    <div class="col-dest"><div class="destination-name" title="${info.direction}">${dest}</div><div class="destination-sub">${sub}</div></div>
+                    ${canExpand?`<div class="col-expand"><button class="btn-expand ${isExp?'expanded':''}" title="Voir les arrets">&#9660;</button></div>`:''}
+                `;
+                container.appendChild(row);
+                if (canExpand) {
+                    const dw=document.createElement('div');
+                    dw.className='line-detail-wrapper'+(isExp?' open':'');
+                    container.appendChild(dw);
+                    if(isExp&&vjLink) loadVehicleJourney(vjLink,dw,info.color);
+                    row.addEventListener('click',()=>{
+                        const open=expandedRows.has(depKey);
+                        if(open){expandedRows.delete(depKey);dw.classList.remove('open');row.querySelector('.btn-expand').classList.remove('expanded');}
+                        else{expandedRows.add(depKey);dw.classList.add('open');row.querySelector('.btn-expand').classList.add('expanded');
+                            if(vjLink) loadVehicleJourney(vjLink,dw,info.color);
+                            else dw.innerHTML='<div class="line-detail-error">Detail non disponible.</div>';}
+                    });
+                }
+            });
+        }
+
+        async function loadVehicleJourney(vjId, wrapper, lineColor) {
+            if(vjCache.has(vjId)){renderLineDetail(vjCache.get(vjId),wrapper,lineColor);return;}
+            wrapper.innerHTML='<div class="line-detail-loading">Chargement des arrets...</div>';
+            try {
+                const r=await fetch(`https://prim.iledefrance-mobilites.fr/marketplace/v2/navitia/vehicle_journeys/${vjId}?depth=2&disable_geojson=true`,{headers:{apiKey:API_KEY}});
+                if(!r.ok) throw new Error(`HTTP ${r.status}`);
+                const data=await r.json();
+                const vj=data.vehicle_journeys&&data.vehicle_journeys[0];
+                if(!vj||!vj.stop_times){wrapper.innerHTML='<div class="line-detail-error">Aucun arret.</div>';return;}
+                vjCache.set(vjId,vj);
+                renderLineDetail(vj,wrapper,lineColor);
+            } catch(e){wrapper.innerHTML=`<div class="line-detail-error">Erreur: ${e.message}</div>`;}
+        }
+
+        function renderLineDetail(vj, wrapper, lineColor) {
+            const stops = vj.stop_times;
+            const color = `#${lineColor||'003ca6'}`;
+            const cellW = 72;
+
+            // Find current station
+            let currentIdx = -1;
+            if (currentStation) {
+                stops.forEach((st,i) => {
+                    if (st.stop_point&&st.stop_point.stop_area&&st.stop_point.stop_area.id===currentStation.id) currentIdx=i;
+                });
             }
 
-            let html = '';
+            // Detect skipped stops using route stop_points
+            // Build a set of served stop_point IDs
+            const servedIds = new Set(stops.map(st => st.stop_point ? st.stop_point.id : null).filter(Boolean));
+            // Check if route has full stop list
+            let routeStopIds = null;
+            if (vj.route && vj.route.stop_points && vj.route.stop_points.length > 0) {
+                routeStopIds = vj.route.stop_points.map(sp => sp.id);
+            }
 
-            departures.forEach(dep => {
-                const info = dep.display_informations;
-                const timeInfo = dep.stop_date_time;
-
-                // 1. Mission Code
-                let mission = info.headsign || info.trip_short_name || '';
-                // Tram and Bus usually don't show mission codes like RER (or it's the destination name which duplicates)
-                if (info.commercial_mode === 'Tramway' || info.commercial_mode === 'Metro' || info.commercial_mode === 'Métro' || info.commercial_mode === 'Bus') {
-                    mission = '';
+            // For each pair of consecutive served stops, check if any route stops were skipped
+            const skippedSegments = new Set();
+            if (routeStopIds) {
+                for (let i = 0; i < stops.length - 1; i++) {
+                    const fromId = stops[i].stop_point ? stops[i].stop_point.id : null;
+                    const toId = stops[i+1].stop_point ? stops[i+1].stop_point.id : null;
+                    if (!fromId || !toId) continue;
+                    const fromRouteIdx = routeStopIds.indexOf(fromId);
+                    const toRouteIdx = routeStopIds.indexOf(toId);
+                    if (fromRouteIdx >= 0 && toRouteIdx >= 0 && toRouteIdx - fromRouteIdx > 1) {
+                        skippedSegments.add(i);
+                    }
                 }
+            }
 
-                // 2. Time & Status
-                const baseTime = parseNavitiaDate(timeInfo.base_departure_date_time);
-                const realTime = parseNavitiaDate(timeInfo.departure_date_time);
-                const now = new Date();
+            let html = '<div class="line-detail"><div class="line-diagram">';
 
-                const delayMinutes = Math.round((realTime - baseTime) / 60000);
-                let statusText = "à l'heure";
-                if (delayMinutes > 0) statusText = `+${delayMinutes} min`;
-
-                const diffMs = realTime - now;
-                const diffMins = Math.floor(diffMs / 60000);
-
-                let displayTime = '';
-                let timeClass = 'col-time';
-
-                if (diffMins < 1) {
-                    displayTime = "A l'approche";
-                    timeClass += ' text-small';
-                } else if (diffMins < 10) {
-                    displayTime = `${diffMins} min`;
-                } else {
-                    displayTime = realTime.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
-                }
-
-                // 3. Dynamic Line Icon
-                // Use the helper function to ensure consistency
-                const iconDiv = createLineIcon(info.label, info.commercial_mode, info.color, info.text_color);
-                const lineIconHtml = iconDiv.outerHTML;
-
-                // 4. Destination
-                let destination = info.direction;
-                // Truncate common long suffixes if needed, or rely on CSS ellipsis
-                // Simple cleanup
-                destination = destination.replace(/\(.*\)/, '').trim();
-
-                let subtext = info.description || "";
-                if (subtext === info.direction) subtext = "";
-
-                // Check length for dynamic sizing - REMOVED for consistency
-                // const isLong = destination.length > 20;
-                // const destClass = isLong ? 'destination-name text-long' : 'destination-name';
-                const destClass = 'destination-name';
-
-                html += `
-                    <div class="schedule-row">
-                        <div class="col-mission">
-                            <div class="mission-code">${mission}</div>
-                            <div class="mission-status">${statusText}</div>
-                        </div>
-                        <div class="${timeClass}">${displayTime}</div>
-                        <div class="col-line">${lineIconHtml}</div>
-                        <div class="col-dest">
-                            <div class="${destClass}" title="${info.direction}">${destination}</div>
-                            <div class="destination-sub">${subtext}</div>
-                        </div>
-                    </div>
-                `;
+            // Names row
+            html += '<div class="station-names-row">';
+            stops.forEach((st,i) => {
+                const name = st.stop_point?st.stop_point.name.replace(/\(.*\)/,'').trim():'?';
+                let cls = '';
+                if(i===currentIdx) cls='current-station';
+                else if(currentIdx>=0&&i<currentIdx) cls='passed-station';
+                html += `<div class="station-name-cell"><span class="station-name-text ${cls}">${name}</span></div>`;
             });
+            html += '</div>';
 
-            container.innerHTML = html;
+            // Dots row with per-segment connectors
+            html += '<div class="station-dots-row" style="position:relative;">';
+
+            // Connector segments (between each pair of dots)
+            for (let i = 0; i < stops.length - 1; i++) {
+                const left = i * cellW + cellW/2; // center of dot i
+                const width = cellW; // to center of dot i+1
+                let segColor, isDashed = skippedSegments.has(i);
+
+                if (currentIdx >= 0 && i < currentIdx) {
+                    segColor = 'var(--connector-passed)';
+                } else if (currentIdx >= 0 && i >= currentIdx) {
+                    segColor = color;
+                } else {
+                    segColor = color;
+                }
+
+                const opacity = (currentIdx >= 0 && i >= currentIdx) ? '0.5' : '1';
+
+                if (isDashed) {
+                    html += `<div class="segment-connector dashed" style="left:${left}px;width:${width}px;border-color:${segColor};opacity:${opacity};"></div>`;
+                } else {
+                    html += `<div class="segment-connector" style="left:${left}px;width:${width}px;background:${segColor};opacity:${opacity};"></div>`;
+                }
+            }
+
+            // Dot cells with mobile vertical connectors INSIDE each cell
+            stops.forEach((st,i) => {
+                let dotClass = 'station-dot';
+                if(i===currentIdx) dotClass+=' current';
+                else if(currentIdx>=0&&i<currentIdx) dotClass+=' passed';
+                else dotClass+=' future';
+                const name = st.stop_point?st.stop_point.name.replace(/\(.*\)/,'').trim():'?';
+                let timeStr = '';
+                if(st.departure_time) timeStr=st.departure_time.substring(0,2)+':'+st.departure_time.substring(2,4);
+                else if(st.arrival_time) timeStr=st.arrival_time.substring(0,2)+':'+st.arrival_time.substring(2,4);
+                let mCls='',mtCls='';
+                if(i===currentIdx) mCls='current-station';
+                else if(currentIdx>=0&&i<currentIdx){mCls='passed-station';mtCls='passed';}
+                const dotBg = i===currentIdx?'':`background-color:${color};`;
+                // Mobile vertical connector inside this cell (not on the last stop)
+                let vConnHtml = '';
+                if (i < stops.length - 1) {
+                    let vSegColor, vIsDashed = skippedSegments.has(i);
+                    if (currentIdx >= 0 && i < currentIdx) vSegColor = 'var(--connector-passed)';
+                    else vSegColor = color;
+                    const vOpacity = (currentIdx >= 0 && i >= currentIdx) ? '0.5' : '1';
+                    if (vIsDashed) {
+                        vConnHtml = `<div class="mobile-vconnector dashed" style="border-color:${vSegColor};opacity:${vOpacity};"></div>`;
+                    } else {
+                        vConnHtml = `<div class="mobile-vconnector" style="background:${vSegColor};opacity:${vOpacity};"></div>`;
+                    }
+                }
+                const cellCls = i===currentIdx ? 'station-dot-cell current-cell' : 'station-dot-cell';
+                html += `<div class="${cellCls}">
+                    <div class="${dotClass}" style="${dotBg}"></div>
+                    <div class="mobile-station-info">
+                        <span class="mobile-station-name ${mCls}">${name}</span>
+                        <span class="mobile-station-time ${mtCls}">${timeStr}</span>
+                    </div>
+                    ${vConnHtml}
+                </div>`;
+            });
+            html += '</div>';
+
+            // Times row
+            html += '<div class="station-times-row">';
+            stops.forEach((st,i) => {
+                let timeStr='';
+                if(st.departure_time) timeStr=st.departure_time.substring(0,2)+':'+st.departure_time.substring(2,4);
+                else if(st.arrival_time) timeStr=st.arrival_time.substring(0,2)+':'+st.arrival_time.substring(2,4);
+                let cls='';
+                if(i===currentIdx) cls='current';
+                else if(currentIdx>=0&&i<currentIdx) cls='passed';
+                html += `<div class="station-time-cell ${cls}">${timeStr}</div>`;
+            });
+            html += '</div></div></div>';
+
+            wrapper.innerHTML = html;
         }
 
-        // --- Utils ---
-        function parseNavitiaDate(isoString) {
-            if (!isoString) return new Date();
-            const year = parseInt(isoString.substring(0, 4));
-            const month = parseInt(isoString.substring(4, 6)) - 1;
-            const day = parseInt(isoString.substring(6, 8));
-            const hour = parseInt(isoString.substring(9, 11));
-            const minute = parseInt(isoString.substring(11, 13));
-            const second = parseInt(isoString.substring(13, 15));
-            return new Date(year, month, day, hour, minute, second);
+        function parseNavitiaDate(s) {
+            if(!s) return new Date();
+            return new Date(+s.substring(0,4),+s.substring(4,6)-1,+s.substring(6,8),+s.substring(9,11),+s.substring(11,13),+s.substring(13,15));
         }
 
-        function debounce(func, wait) {
-            let timeout;
-            return function executedFunction(...args) {
-                const later = () => {
-                    clearTimeout(timeout);
-                    func(...args);
-                };
-                clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
-            };
-        }
-
-        // Auto Refresh
-        setInterval(() => {
-            if (currentStation) fetchSchedules();
-        }, 30000);
-
-        // Start
+        setInterval(()=>{if(currentStation)fetchSchedules();},30000);
         init();
-
     </script>
 </body>
-
 </html>
